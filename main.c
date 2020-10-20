@@ -8,6 +8,12 @@
 
 #include <stdio.h>
 
-extern int combination_calculator();
+#include "calculations/combination.h"
 
-int main() { combination_calculator(); }
+int main(void) {
+  int comb = combination_calculator(7, 5);
+  printf("%d\n", comb);
+
+  int fact = factorial(3);
+  printf("%d\n", fact);
+}

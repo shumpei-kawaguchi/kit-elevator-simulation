@@ -6,9 +6,10 @@
 //  Copyright (c) 2020 Shumpei Kawaguchi. All rights reserved.
 //
 
-#include <stdio.h>
+#ifndef COMBINATION_H  //二重でincludeされることを防ぐ
+#define COMBINATION_H
 
-double combination_calculator() {
-  printf("combination_calculator");
-  return 0;
-}
+int combination_calculator(int n, int r);
+int factorial(int n);
+
+#endif
