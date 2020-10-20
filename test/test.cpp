@@ -4,6 +4,7 @@ extern "C" {
 #include "../calculations/combination.c"
 }
 
+// FactorialTest
 class FactorialTest : public ::testing::Test {
  protected:
   virtual void SetUp() {}
@@ -17,4 +18,24 @@ TEST(FactorialTest, HandlesPositiveInput) {
   EXPECT_EQ(2, factorial(2));
   EXPECT_EQ(6, factorial(3));
   EXPECT_EQ(40320, factorial(8));
+}
+
+// CombinationTest
+TEST(CombinationTest, HandlesZeroInput) {
+  EXPECT_EQ(1, combination_calculator(7, 0));
+}
+TEST(CombinationTest, HandlesEqualInput) {
+  EXPECT_EQ(1, combination_calculator(7, 7));
+}
+TEST(CombinationTest, HandlesOneInput) {
+  EXPECT_EQ(7, combination_calculator(7, 1));
+}
+TEST(CombinationTest, HandlesPositiveInput) {
+  EXPECT_EQ(21, combination_calculator(7, 2));
+  EXPECT_EQ(21, combination_calculator(7, 5));
+  EXPECT_EQ(10, combination_calculator(5, 3));
+  EXPECT_EQ(3, combination_calculator(3, 2));
+}
+TEST(CombinationTest, HandlesNegativeInput) {
+  EXPECT_EQ(0, combination_calculator(5, 7));
 }

@@ -9,12 +9,14 @@
 #include "combination.h"
 
 // nCr = n!/(r! (n-r)!)
+// If n < r, return 0.
 int combination_calculator(int n, int r) {
   if (r == 0 || n == r)
     return 1;
   else if (r == 1)
     return n;
-  return 0;
+  else
+    return factorial(n) / (factorial(r) * factorial(n - r));
 }
 
 // 3! = 3 * 2 * 1
