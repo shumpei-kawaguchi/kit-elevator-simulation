@@ -17,18 +17,18 @@ clean:
 	rm -f *.o *~ $(PROGRAM)
 
 
-# Test
+# Test =================================
 tt := $(TEST_TARGET)
 test:
 	$(CXX) -std=c++11 $(tt) $(TESTFLAGS)
 	./a.out
 
-# main build
+# main build =================================
 build: $(OBJS)
 	$(CC) $(CFLAGS) $(OUTPUT_OPTION) $(OBJS)
 
 
-# Compile functions
+# Compile functions =================================
 %.o: %.c
 	$(CC) $(CFLAGS) -c $^
 
