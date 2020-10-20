@@ -3,7 +3,7 @@ CFLAGS        = -g -Wall
 DIR           = calculations
 
 CXX           = g++
-TEST_TARGET   := test/test.cpp
+TEST_TARGET   = test
 TESTFLAGS     = -lgtest_main -lgtest
 
 OBJS          = main.o combination.o
@@ -16,11 +16,13 @@ all:$(PROGRAM)
 clean:
 	rm -f *.o *~ $(PROGRAM)
 
-
 # Test =================================
-tt := $(TEST_TARGET)
 test:
-	$(CXX) -std=c++11 $(tt) $(TESTFLAGS)
+	$(CXX) -std=c++11 test/test.cpp $(TESTFLAGS)
+	./a.out
+
+test%:
+	$(CXX) -std=c++11 test/$@.cpp $(TESTFLAGS)
 	./a.out
 
 # main build =================================
