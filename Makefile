@@ -1,30 +1,36 @@
 CC            = gcc
 CFLAGS        = -g -Wall
+DIR           = calculations
 
 CXX           = g++
-TEST_TARGET   = test/test.cpp
+TEST_TARGET   := test/test.cpp
 TESTFLAGS     = -lgtest_main -lgtest
 
 OBJS          = main.o combination.o
 PROGRAM       = kit-elevator-simulation
 
-all: $(PROGRAM)
+.PHONY: all test clean
+
+all:$(PROGRAM)
 
 clean:
 	rm -f *.o *~ $(PROGRAM)
 
 
-.PHONY: all test clean
-
+# Test
+tt := $(TEST_TARGET)
 test:
-	$(CXX) -std=c++11 $(TEST_TARGET) -lgtest_main -lgtest
+	$(CXX) -std=c++11 $(tt) $(TESTFLAGS)
 	./a.out
 
-debug:
-	./a.out
-
+# main build
 build: $(OBJS)
-	$(CC) $(CFLAGS) -o build $(OBJS)
+	$(CC) $(CFLAGS) $(OUTPUT_OPTION) $(OBJS)
+
+
+# Compile functions
+%.o: %.c
+	$(CC) $(CFLAGS) -c $^
 
 main.o: main.c
 	$(CC) $(CFLAGS) -c main.c
