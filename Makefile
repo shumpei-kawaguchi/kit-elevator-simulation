@@ -1,10 +1,11 @@
 CC            = gcc
 CFLAGS        = -g -Wall
 
+CXX           = g++
 TEST_TARGET   = test/test.cpp
 TESTFLAGS     = -lgtest_main -lgtest
 
-OBJS          = main.o sub.o
+OBJS          = main.o combination.o
 PROGRAM       = kit-elevator-simulation
 
 all: $(PROGRAM)
@@ -12,13 +13,17 @@ all: $(PROGRAM)
 clean:
 	rm -f *.o *~ $(PROGRAM)
 
+
+.PHONY: all test clean
+
 test:
-	g++ -std=c++11 $(TEST_TARGET) $(TESTFLAGS)
+	$(CXX) -std=c++11 $(TEST_TARGET) -lgtest_main -lgtest
+	./a.out
 
 debug:
 	./a.out
 
-build: main.o combination.o
+build: $(OBJS)
 	$(CC) $(CFLAGS) -o build $(OBJS)
 
 main.o: main.c
