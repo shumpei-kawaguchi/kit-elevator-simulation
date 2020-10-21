@@ -9,7 +9,7 @@
 #ifndef COMBINATION_H  //二重でincludeされることを防ぐ
 #define COMBINATION_H
 
-int combination_calculator(int n, int r);
+int combinations(int n, int r);
 int factorial(int n);
 
 #endif

@@ -11,7 +11,7 @@
 #include "calculations/combination.h"
 
 int main(void) {
-  int comb = combination_calculator(7, 5);
+  int comb = combinations(7, 5);
   printf("%d\n", comb);
 
   int fact = factorial(3);

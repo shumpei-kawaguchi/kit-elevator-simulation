@@ -10,7 +10,7 @@
 
 // nCr = n!/(r! (n-r)!)
 // If n < r, return 0.
-int combination_calculator(int n, int r) {
+int combinations(int n, int r) {
   if (r == 0 || n == r)
     return 1;
   else if (r == 1)

@@ -7,14 +7,18 @@ TEST_TARGET   = test
 TESTFLAGS     = -lgtest_main -lgtest
 
 OBJS          = main.o combination.o
+OBJS_PATH     = compile/objs/
 PROGRAM       = kit-elevator-simulation
 
 .PHONY: all test clean
 
-all:$(PROGRAM)
+all: $(PROGRAM)
+
+$(PROGRAM): $(OBJS)
+	$(CC) $(CFLAGS) $(OUTPUT_OPTION) $(OBJS)
 
 clean:
-	rm -f *.o *~ $(PROGRAM)
+	rm -f *.o *.out *~ $(PROGRAM)
 
 # Test =================================
 test:
@@ -24,11 +28,6 @@ test:
 test%:
 	$(CXX) -std=c++11 test/$@.cpp $(TESTFLAGS)
 	./a.out
-
-# main build =================================
-build: $(OBJS)
-	$(CC) $(CFLAGS) $(OUTPUT_OPTION) $(OBJS)
-
 
 # Compile functions =================================
 %.o: %.c
