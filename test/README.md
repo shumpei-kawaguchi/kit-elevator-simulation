@@ -61,7 +61,7 @@ Expected equality of these values:
 
  1 FAILED TEST
   ```
-  `make test` is operation check for googletest. So if you want to run a test, use test cpp test file name instead of test.  
+  `make test` is operation check for googletest. So if you want to run a test, use cpp test file name instead of test.  
   Exsample:
   ```shell
   $ make testCombination
