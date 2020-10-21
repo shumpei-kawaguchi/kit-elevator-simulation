@@ -1,12 +1,15 @@
 //
-//  test.cpp
+//  define.h
 //  kit-elevator-simulation
 //
 //  Created by Shumpei Kawaguchi on 2020/10/20.
 //  Copyright (c) 2020 Shumpei Kawaguchi. All rights reserved.
 //
 
-#include <gtest/gtest.h>
+#ifndef DEFINE_H
+#define DEFINE_H
 
-TEST(SampleTest, SampleTestOk) { EXPECT_EQ(1, 1); }
-TEST(SampleTest, SampleTestNg) { EXPECT_EQ(1, 0); }
+#define CLASS 5
+#define NUMBER_OF_PEOPLE 50
+
+#endif

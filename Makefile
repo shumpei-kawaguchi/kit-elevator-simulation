@@ -6,7 +6,7 @@ CXX           = g++
 TEST_TARGET   = test
 TESTFLAGS     = -lgtest_main -lgtest
 
-OBJS          = main.o combination.o
+OBJS          = main.o combination.o customer.o init.o
 OBJS_PATH     = compile/objs/
 PROGRAM       = kit-elevator-simulation
 
@@ -19,6 +19,9 @@ $(PROGRAM): $(OBJS)
 
 clean:
 	rm -f *.o *.out *~ $(PROGRAM)
+
+build: $(OBJS)
+	$(CC) $(CFLAGS) -o $(PROGRAM) $(OBJS)
 
 # Test =================================
 test:
@@ -33,8 +36,18 @@ test%:
 %.o: %.c
 	$(CC) $(CFLAGS) -c $^
 
+# main
 main.o: main.c
 	$(CC) $(CFLAGS) -c main.c
 
+# common
+init.o: common/init.c
+	$(CC) $(CFLAGS) -c common/init.c
+
+# calculations
 combination.o: calculations/combination.c
 	$(CC) $(CFLAGS) -c calculations/combination.c
+
+# queue
+customer.o: queue/customer.c
+	$(CC) $(CFLAGS) -c queue/customer.c

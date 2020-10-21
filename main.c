@@ -9,11 +9,12 @@
 #include <stdio.h>
 
 #include "calculations/combination.h"
+#include "common/define.h"
+#include "common/init.h"
+#include "queue/customer.h"
 
-int main(void) {
-  int comb = combinations(7, 5);
-  printf("%d\n", comb);
+// Global
+int class_number;
+int number_of_ina_class;
 
-  int fact = factorial(3);
-  printf("%d\n", fact);
-}
+int main(void) { init(); }
