@@ -26,6 +26,8 @@
 Confirmed operating environment:
 - Mac OS X
 
+Also probably available on Linux or Windows.
+
 ## Usage
 ### Build
 ### Test
