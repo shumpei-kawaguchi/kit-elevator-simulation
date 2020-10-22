@@ -10,6 +10,6 @@
 #define COMBINATION_H
 
 int combinations(int n, int r);
-int factorial(int n);
+int factorial(unsigned int n);
 
 #endif
