@@ -15,12 +15,14 @@ int combinations(int n, int r) {
     return 1;
   else if (r == 1)
     return n;
+  else if ((n - r) < 0)
+    return 0;
   else
     return factorial(n) / (factorial(r) * factorial(n - r));
 }
 
 // 3! = 3 * 2 * 1
-int factorial(int n) {
+int factorial(unsigned int n) {
   if (n == 0) return 1;
   int fact = n;
   while (n > 1) {
