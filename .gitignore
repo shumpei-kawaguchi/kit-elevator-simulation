@@ -1,6 +1,7 @@
 .DS_Store
 build
 kit-elevator-simulation
+.vs
 # Prerequisites
 *.d
 
