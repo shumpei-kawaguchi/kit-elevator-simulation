@@ -6,7 +6,10 @@ CXX           = g++
 TEST_TARGET   = test
 TESTFLAGS     = -lgtest_main -lgtest
 
-OBJS          = main.o combination.o customer.o init.o
+INIT          = init.o
+CALCULATIONS  = combination.o ratio.o
+QUEUE         = customer.o
+OBJS          = main.o $(INIT) $(CALCULATIONS) $(QUEUE)
 OBJS_PATH     = compile/objs/
 PROGRAM       = kit-elevator-simulation
 
@@ -47,6 +50,9 @@ init.o: common/init.c
 # calculations
 combination.o: calculations/combination.c
 	$(CC) $(CFLAGS) -c calculations/combination.c
+
+ratio.o: calculations/ratio.c
+	$(CC) $(CFLAGS) -c calculations/ratio.c
 
 # queue
 customer.o: queue/customer.c

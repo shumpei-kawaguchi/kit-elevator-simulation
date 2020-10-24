@@ -17,4 +17,4 @@
 int class_number;
 int number_of_ina_class;
 
-int main(void) { init(); }
+int main(void) { ratio_pattern(); }

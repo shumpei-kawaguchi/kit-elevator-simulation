@@ -11,5 +11,7 @@
 
 int combinations(int n, int r);
 int factorial(int n);
+int ratio_pattern();
+int classroom_ratio(int n, int vacant_room, int classroom);
 
 #endif

@@ -8,6 +8,10 @@
 
 #include "combination.h"
 
+#include <stdio.h>
+
+#include "../common/define.h"
+
 // nCr = n!/(r! (n-r)!)
 // If n < r, return 0.
 int combinations(int n, int r) {
