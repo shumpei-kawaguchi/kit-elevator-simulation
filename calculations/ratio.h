@@ -9,6 +9,9 @@
 #ifndef RATIO_H
 #define RATIO_H
 
+unsigned int classroom_of(int level);
+unsigned int ratio_of(int level);
+
 int ratio_pattern();
 int classroom_ratio(int n, int include, int classroom);
 

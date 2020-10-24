@@ -15,32 +15,35 @@
 #include "../common/define.h"
 
 int classroom_of_level[LEVEL] = {1, 3, 3, 3, 2, 2, 1};
+int ratio_of_level[LEVEL] = {};
+
+unsigned int classroom_of(int level) { return classroom_of_level[level]; }
+
+unsigned int ratio_of(int level) { return ratio_of_level[level]; }
 
 int ratio_pattern() {
   //
   srand((unsigned int)time(NULL));
-  //
-  int ratio[LEVEL] = {};
   int classroom = CLASS;
   //
   for (int i = 0; i < LEVEL; i++) {
     //
     int max = 0;
     for (int next = i; next < LEVEL; next++) {
-      max += classroom_of_level[next];
+      max += classroom_of(next);
     }
     //
-    int include = 0;  // kongo
-    if (max - classroom_of_level[i] - classroom < 0)
-      include = -(max - classroom_of_level[i] - classroom);
-    ratio[i] = classroom_ratio(i, include, classroom);
-    classroom -= ratio[i];
+    int include = 0;
+    int col = classroom_of(i);
+    if (max - col - classroom < 0) include = -(max - col - classroom);
+    ratio_of_level[i] = classroom_ratio(i, include, classroom);
+    classroom -= ratio_of_level[i];
   }
   //
   int total = 0;
   for (int i = 0; i < LEVEL; i++) {
-    total += ratio[i];
-    printf("%d\t", ratio[i]);
+    total += ratio_of_level[i];
+    printf("%d\t", ratio_of_level[i]);
   }
   printf("total = %d\n", total);
   //
@@ -48,7 +51,7 @@ int ratio_pattern() {
 }
 
 int classroom_ratio(int n, int include, int classroom) {
-  int num = rand() % (classroom_of_level[n] + 1);
+  int num = rand() % (classroom_of(n) + 1);
   if (num < include) num = include;
   if (num > classroom) num = classroom;
   return num;
