@@ -21,6 +21,11 @@ unsigned int classroom_of(int level) { return classroom_of_level[level]; }
 
 unsigned int ratio_of(int level) { return ratio_of_level[level]; }
 
+unsigned int ratio_is(int level, int value) {
+  ratio_of_level[level] = value;
+  return ratio_of_level[level];
+}
+
 int ratio_pattern() {
   //
   srand((unsigned int)time(NULL));
@@ -36,16 +41,13 @@ int ratio_pattern() {
     int include = 0;
     int col = classroom_of(i);
     if (max - col - classroom < 0) include = -(max - col - classroom);
-    ratio_of_level[i] = classroom_ratio(i, include, classroom);
-    classroom -= ratio_of_level[i];
+    ratio_is(i, classroom_ratio(i, include, classroom));
+    classroom -= ratio_of(i);
   }
   //
   int total = 0;
-  for (int i = 0; i < LEVEL; i++) {
-    total += ratio_of_level[i];
-    printf("%d\t", ratio_of_level[i]);
-  }
-  printf("total = %d\n", total);
+  for (int i = 0; i < LEVEL; i++) total += ratio_of(i);
+
   //
   return total;
 }

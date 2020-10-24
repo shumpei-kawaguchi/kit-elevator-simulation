@@ -10,13 +10,10 @@
 
 #include <stdio.h>
 
+#include "../calculations/ratio.h"
 #include "define.h"
 
 int init() {
-  class_number = CLASS;
-  number_of_ina_class = NUMBER_OF_PEOPLE;
-
-  printf("class: %d, number: %d\n", class_number, number_of_ina_class);
-
+  for (int i = 0; i < LEVEL; i++) ratio_is(i, 0);
   return 0;
 }

@@ -14,8 +14,17 @@
 #include "common/init.h"
 #include "queue/customer.h"
 
-// Global
-int class_number;
-int number_of_ina_class;
-
-int main(void) { ratio_pattern(); }
+int main(void) {
+  //
+  init();
+  //
+  ratio_pattern();
+  //
+  int total = 0;
+  for (int i = 0; i < LEVEL; i++) {
+    total += ratio_of(i);
+    printf("%d\t", ratio_of(i));
+  }
+  printf("total = %d\n", total);
+  //
+}
