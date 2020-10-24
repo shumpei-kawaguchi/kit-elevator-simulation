@@ -30,10 +30,10 @@ int ratio_pattern() {
       max += classroom_of_level[next];
     }
     //
-    int vacant_room = 0;  // kongo
+    int include = 0;  // kongo
     if (max - classroom_of_level[i] - classroom < 0)
-      vacant_room = -(max - classroom_of_level[i] - classroom);
-    ratio[i] = classroom_ratio(i, vacant_room, classroom);
+      include = -(max - classroom_of_level[i] - classroom);
+    ratio[i] = classroom_ratio(i, include, classroom);
     classroom -= ratio[i];
   }
   //
@@ -44,12 +44,12 @@ int ratio_pattern() {
   }
   printf("total = %d\n", total);
   //
-  return 0;
+  return total;
 }
 
-int classroom_ratio(int n, int vacant_room, int classroom) {
+int classroom_ratio(int n, int include, int classroom) {
   int num = rand() % (classroom_of_level[n] + 1);
-  if (num < vacant_room) num = vacant_room;
+  if (num < include) num = include;
   if (num > classroom) num = classroom;
   return num;
 }

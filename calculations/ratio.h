@@ -10,6 +10,6 @@
 #define RATIO_H
 
 int ratio_pattern();
-int classroom_ratio(int n, int vacant_room, int classroom);
+int classroom_ratio(int n, int include, int classroom);
 
 #endif

@@ -9,6 +9,7 @@
 #include <stdio.h>
 
 #include "calculations/combination.h"
+#include "calculations/ratio.h"
 #include "common/define.h"
 #include "common/init.h"
 #include "queue/customer.h"
