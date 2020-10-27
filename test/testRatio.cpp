@@ -14,7 +14,7 @@ extern "C" {
 #include "../calculations/ratio.c"
 }
 
-TEST(RatioTest, RatioTotalTest) { EXPECT_EQ(CLASS, ratio_pattern()); }
+TEST(RatioTest, RatioTotalTest) { EXPECT_EQ(0, ratio_pattern()); }
 
 TEST(RatioTest, ClassroomRatio) {
   EXPECT_EQ(1, classroom_ratio(LEVEL - 1, 1, 1));

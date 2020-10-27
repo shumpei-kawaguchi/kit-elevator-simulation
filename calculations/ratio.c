@@ -49,7 +49,7 @@ int ratio_pattern() {
   for (int i = 0; i < LEVEL; i++) total += ratio_of(i);
 
   //
-  return total;
+  return CLASS - total;
 }
 
 int classroom_ratio(int n, int include, int classroom) {
