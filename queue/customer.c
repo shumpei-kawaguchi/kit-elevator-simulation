@@ -10,20 +10,17 @@
 
 #include <stdio.h>
 
-customer customer_of_level(int level) {
-  customer customer;
-  customer.level = level;
-  int array[] = {3, 6, 4, 8, 3, 5, 7, 3};
-  int myclass = 0;
+#include "../calculations/ratio.h"
+#include "../common/define.h"
 
-  for (int i = 0; i < sizeof(array) / sizeof(array[0]); i++) {
-    printf("%d\n", array[i]);
-    if (array[i] == level) {
-      myclass++;
-    }
+static unsigned int customer_queue[LEVEL] = {};
+
+int customer_arrival() {
+  int total = 0;
+  for (int i = 0; i < LEVEL; i++) {
+    customer_queue[i] = ratio_of(i) * NUMBER_OF_PEOPLE;
+    total += customer_queue[i];
   }
 
-  customer.number_of_people = myclass * 50;
-  printf("number is: %d\n", customer.number_of_people);
-  return customer;
+  return CLASS * NUMBER_OF_PEOPLE - total;
 }

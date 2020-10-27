@@ -9,12 +9,6 @@
 #ifndef CUSTOMER_H
 #define CUSTOMER_H
 
-typedef struct node {
-  int level;
-  int number_of_people;
-  struct node *next;
-} customer;
-
-customer customer_of_level(int level);
+int customer_arrival();
 
 #endif
