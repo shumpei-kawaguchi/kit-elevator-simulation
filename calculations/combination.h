@@ -6,7 +6,7 @@
 //  Copyright (c) 2020 Shumpei Kawaguchi. All rights reserved.
 //
 
-#ifndef COMBINATION_H  //二重でincludeされることを防ぐ
+#ifndef COMBINATION_H
 #define COMBINATION_H
 
 int combinations(int n, int r);
