@@ -10,10 +10,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int write()
+int log_write()
 {
   FILE *outputfile;
-  outputfile = fopen("../output.log", "w");
+  outputfile = fopen("./output/test.log", "w");
   if (outputfile == NULL)
   {
     printf("cannot open file");

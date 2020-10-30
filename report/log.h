@@ -9,6 +9,6 @@
 #ifndef LOG_H
 #define LOG_H
 
-int write();
+int log_write();
 
 #endif
