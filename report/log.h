@@ -9,6 +9,7 @@
 #ifndef LOG_H
 #define LOG_H
 
-int log_write();
+int log_write(log_type t, char *func, char *message);
+int log_header();
 
 #endif
