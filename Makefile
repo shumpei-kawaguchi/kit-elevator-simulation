@@ -1,9 +1,8 @@
 CC            = gcc
-CFLAGS        = -g -Wall
+CFLAGS        = -std=c11 -g -Wall
 DIR           = calculations
 
 CXX           = g++
-TEST_TARGET   = test
 TESTFLAGS     = -lgtest_main -lgtest
 
 # Files

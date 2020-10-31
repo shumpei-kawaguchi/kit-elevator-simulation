@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 
 int genRand(int min, int max) {
@@ -23,17 +24,9 @@ int genRand(int min, int max) {
   return ret;
 }
 
-char* getRandomCharsLower(int length) {
-  char chars[length + 2];
-  for (int i = 0; i < length; i++) {
-    chars[i] = getRandomCharLower();
-  }
-  return chars;
-}
-
-static char getRandomCharLower(void) {
+char getRandomCharLower(void) {
   //　英小文字の例
-  const char CHARS[] =
+  const char CHARS[64] =
       "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
   int index = genRand(0, (strlen(CHARS) - 1));
   char c = CHARS[index];

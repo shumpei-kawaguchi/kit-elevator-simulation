@@ -4,3 +4,6 @@ Oct-31 11:54:08 DEBUG/[LogTest] Write test, this is message.
 Oct-31 12:22:52 INFO/[LogTest] Write test, this is message.
 Oct-31 12:22:52 ERROR/[LogTest] Write test, this is message.
 Oct-31 12:22:52 DEBUG/[LogTest] Write test, this is message.
+Oct-31 13:06:03 INFO/[LogTest] Write test, this is message.
+Oct-31 13:06:03 ERROR/[LogTest] Write test, this is message.
+Oct-31 13:06:03 DEBUG/[LogTest] Write test, this is message.

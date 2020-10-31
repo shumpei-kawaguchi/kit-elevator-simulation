@@ -9,7 +9,8 @@
 #ifndef LOG_H
 #define LOG_H
 
+int new_log(int length);
 int log_write(int log_type, char *func, char *message);
-static int log_header();
+int log_header();
 
 #endif

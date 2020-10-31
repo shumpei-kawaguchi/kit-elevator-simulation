@@ -11,9 +11,12 @@
 #include <stdio.h>
 
 #include "../calculations/ratio.h"
+#include "../report/log.h"
 #include "define.h"
 
 int init() {
+  char TAG[6] = "init";
+  log_write(0, TAG, "init start.");
   for (int i = 0; i < LEVEL; i++) ratio_is(i, 0);
   return 0;
 }

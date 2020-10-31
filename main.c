@@ -13,9 +13,11 @@
 #include "common/define.h"
 #include "common/init.h"
 #include "queue/customer.h"
+#include "report/log.h"
 
 int main(void) {
   //
+  new_log(7);
   init();
   //
   ratio_pattern();

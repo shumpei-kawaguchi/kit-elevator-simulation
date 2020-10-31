@@ -10,7 +10,6 @@
 #define RANDOM_H
 
 int genRand(int min, int max);
-char* getRandomCharsLower(int length);
-static char getRandomCharLower(void);
+char getRandomCharLower(void);
 
 #endif
