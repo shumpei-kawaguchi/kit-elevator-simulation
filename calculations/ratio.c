@@ -13,6 +13,7 @@
 #include <time.h>
 
 #include "../common/define.h"
+#include "../report/log.h"
 #include "random.h"
 
 static int classroom_of_level[LEVEL] = {1, 3, 3, 3, 2, 2, 1};
@@ -32,22 +33,29 @@ unsigned int ratio_is(int level, int value) {
 
 // Set ratio pattern.
 int ratio_pattern() {
+  char TAG[] = "ratio_pattern";
+  log_write(0, TAG, "START");
   int classroom = CLASS;
   int total = 0;
 
   for (int i = 0; i < LEVEL; i++) {
     int max = 0;
-    int include = 0;
+    int min = 0;
     int col = classroom_of(i);
     for (int next = i; next < LEVEL; next++) max += classroom_of(next);
 
-    if (max - col - classroom < 0) include = -(max - col - classroom);
-    ratio_is(i, classroom_ratio(i, include, classroom));
+    if (max - col - classroom < 0) min = -(max - col - classroom);
+    ratio_is(i, classroom_ratio(i, min, classroom));
     classroom -= ratio_of(i);
   }
 
   for (int i = 0; i < LEVEL; i++) total += ratio_of(i);
-  return CLASS - total;
+  if (CLASS - total != 0) {
+    log_write(1, TAG, "Wrong total. EXIT code 1.");
+    exit(1);
+  }
+  log_write(0, TAG, "END");
+  return 0;
 }
 
 // Return randam ratio.

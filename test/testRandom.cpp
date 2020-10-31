@@ -27,7 +27,3 @@ TEST(RandomTest, genRand_Test_LE) {
   EXPECT_LE(min, result);
   printf("genRand_Test_LE result: [%d]\n", result);
 }
-
-TEST(RandomTest, getRandomCharsLower_Test) {
-  printf("getRandomCharsLower result: [%s]\n", getRandomCharsLower(7));
-}

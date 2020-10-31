@@ -7,6 +7,7 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "calculations/combination.h"
 #include "calculations/ratio.h"
@@ -16,8 +17,10 @@
 #include "report/log.h"
 
 int main(void) {
+  char TAG[] = "main";
   //
   new_log(7);
+  log_write(0, TAG, "START");
   init();
   //
   ratio_pattern();
@@ -29,4 +32,6 @@ int main(void) {
   }
   printf("total = %d\n", total);
   //
+  log_write(0, TAG, "END");
+  exit(0);
 }

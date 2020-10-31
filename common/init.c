@@ -16,7 +16,7 @@
 
 int init() {
   char TAG[6] = "init";
-  log_write(0, TAG, "init start.");
+  log_write(0, TAG, "START");
   for (int i = 0; i < LEVEL; i++) ratio_is(i, 0);
   return 0;
 }

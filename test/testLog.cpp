@@ -11,6 +11,7 @@
 #include "../common/define.h"
 
 extern "C" {
+#include "../calculations/random.c"
 #include "../report/log.c"
 }
 

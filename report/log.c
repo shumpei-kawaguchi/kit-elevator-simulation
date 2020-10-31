@@ -43,7 +43,7 @@ int log_write(int log_type, char *func, char *message) {
     exit(1);
   }
 
-  fprintf(outputfile, "%s/[%s] %s\n", type_name[log_type], func, message);
+  fprintf(outputfile, "%s/[%s] %s", type_name[log_type], func, message);
   fclose(outputfile);
   return 0;
 }
@@ -64,7 +64,7 @@ int log_header() {
     exit(1);
   }
 
-  fprintf(outputfile, "%s-%2d ", month[pnow->tm_mon], pnow->tm_mday);
+  fprintf(outputfile, "\n%s-%2d ", month[pnow->tm_mon], pnow->tm_mday);
 
   if (pnow->tm_hour < 10) fprintf(outputfile, "0");
   fprintf(outputfile, "%d:", pnow->tm_hour);
