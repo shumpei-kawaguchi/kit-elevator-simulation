@@ -2,6 +2,7 @@
 build
 kit-elevator-simulation
 .vs
+*.log
 # Prerequisites
 *.d
 
