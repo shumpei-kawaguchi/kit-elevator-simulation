@@ -13,6 +13,6 @@ extern "C" {
 }
 
 TEST(CustomerTest, SetCustomer) {
-  EXPECT_EQ(5, customer_of_level(5).level);
+  EXPECT_EQ(5, customer_of(5));
   EXPECT_EQ(150, customer_of_level(3).number_of_people);
 }
