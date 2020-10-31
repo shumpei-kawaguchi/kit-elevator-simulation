@@ -13,11 +13,4 @@
 #define CLASS 10
 #define NUMBER_OF_PEOPLE 50
 
-enum log_type
-{
-  I,
-  E,
-  D
-};
-
 #endif

@@ -7,18 +7,17 @@
 //
 
 #include <gtest/gtest.h>
+
 #include "../common/define.h"
 
-extern "C"
-{
+extern "C" {
 #include "../report/log.c"
 }
 
-TEST(LogTest, WriteLog)
-{
+TEST(LogTest, WriteLog) {
   char func[] = "LogTest";
   char message[] = "Write test, this is message.";
-  EXPECT_EQ(0, log_write(I, func, message));
-  EXPECT_EQ(0, log_write(E, func, message));
-  EXPECT_EQ(0, log_write(D, func, message));
+  EXPECT_EQ(0, log_write(0, func, message));
+  EXPECT_EQ(0, log_write(1, func, message));
+  EXPECT_EQ(0, log_write(2, func, message));
 }
