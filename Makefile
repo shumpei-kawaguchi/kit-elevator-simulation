@@ -8,7 +8,7 @@ TESTFLAGS     = -lgtest_main -lgtest
 
 # Files
 INIT          = init.o
-CALCULATIONS  = combination.o ratio.o
+CALCULATIONS  = combination.o ratio.o random.o
 QUEUE         = customer.o
 REPORT        = csv.o log.o
 #
@@ -56,6 +56,9 @@ combination.o: calculations/combination.c
 
 ratio.o: calculations/ratio.c
 	$(CC) $(CFLAGS) -c calculations/ratio.c
+
+random.o: calculations/random.c
+	$(CC) $(CFLAGS) -c calculations/random.c
 
 # queue
 customer.o: queue/customer.c

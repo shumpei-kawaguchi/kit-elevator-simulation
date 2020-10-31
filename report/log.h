@@ -10,6 +10,6 @@
 #define LOG_H
 
 int log_write(int log_type, char *func, char *message);
-int log_header();
+static int log_header();
 
 #endif

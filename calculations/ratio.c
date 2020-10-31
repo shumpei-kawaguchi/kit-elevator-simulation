@@ -13,6 +13,7 @@
 #include <time.h>
 
 #include "../common/define.h"
+#include "random.h"
 
 static int classroom_of_level[LEVEL] = {1, 3, 3, 3, 2, 2, 1};
 static int ratio_of_level[LEVEL] = {};
@@ -33,7 +34,6 @@ unsigned int ratio_is(int level, int value) {
 int ratio_pattern() {
   int classroom = CLASS;
   int total = 0;
-  srand((unsigned int)time(NULL));
 
   for (int i = 0; i < LEVEL; i++) {
     int max = 0;
@@ -51,9 +51,9 @@ int ratio_pattern() {
 }
 
 // Return randam ratio.
-int classroom_ratio(int n, int include, int classroom) {
-  int num = rand() % (classroom_of(n) + 1);
-  if (num < include) num = include;
-  if (num > classroom) num = classroom;
+int classroom_ratio(int n, int min, int classroom) {
+  int max = classroom_of(n);
+  if (max > classroom) max = classroom;
+  int num = genRand(min, max);
   return num;
 }

@@ -31,7 +31,7 @@ int log_write(int log_type, char *func, char *message) {
   return 0;
 }
 
-int log_header() {
+static int log_header() {
   time_t now = time(NULL);
   struct tm *pnow = localtime(&now);
   char month[][5] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun",
