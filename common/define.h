@@ -9,6 +9,8 @@
 #ifndef DEFINE_H
 #define DEFINE_H
 
+#define START "--START--"
+#define END "--END--"
 #define LEVEL 7
 #define CLASS 10
 #define NUMBER_OF_PEOPLE 50

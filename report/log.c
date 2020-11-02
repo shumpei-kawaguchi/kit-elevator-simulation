@@ -20,18 +20,22 @@ static char type_name[3][7] = {"INFO", "ERROR", "DEBUG"};
 
 static char log_id[9] = "test";
 
+// Create random string for log file name.
 int new_log(int length) {
+  const char *TAG = __func__;
   char chars[length + 2];
   for (int i = 0; i < length; i++) {
     chars[i] = getRandomCharLower();
   }
   strcpy(log_id, chars);
-  printf("log file is %s\n", log_id);
+  printf("log file is output/%s.log\n", log_id);
+  log_write(2, TAG, log_id);
   return 0;
 }
 
+// Write log to .log file.
 // log_type 0 = "INFO", 1 = "ERROR", 2 = "DEBUG"
-int log_write(int log_type, char *func, char *message) {
+int log_write(int log_type, const char *func, char *message) {
   log_header();
   FILE *outputfile;
   char path[32] = "./output/";
@@ -48,6 +52,8 @@ int log_write(int log_type, char *func, char *message) {
   return 0;
 }
 
+// Write log header.
+// MM-dd hh:mm:ss
 int log_header() {
   time_t now = time(NULL);
   struct tm *pnow = localtime(&now);

@@ -13,6 +13,8 @@
 #include <string.h>
 #include <time.h>
 
+// Make random number of nin to max.
+// [NO LOG OUTPUT]
 int genRand(int min, int max) {
   static int flag;
   if (flag == 0) {
@@ -24,8 +26,10 @@ int genRand(int min, int max) {
   return ret;
 }
 
+// Make random char of
+// "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".
+// [NO LOG OUTPUT]
 char getRandomCharLower(void) {
-  //　英小文字の例
   const char CHARS[64] =
       "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
   int index = genRand(0, (strlen(CHARS) - 1));

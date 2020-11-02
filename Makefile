@@ -7,7 +7,7 @@ TESTFLAGS     = -lgtest_main -lgtest
 
 # Files
 INIT          = init.o
-CALCULATIONS  = combination.o ratio.o random.o
+CALCULATIONS  = ratio.o random.o
 QUEUE         = customer.o
 REPORT        = csv.o log.o
 #
@@ -24,6 +24,9 @@ $(PROGRAM): $(OBJS)
 
 clean:
 	rm -f *.o *.out *~ $(PROGRAM)
+
+logrm:
+	rm -f output/*.log
 
 build: $(OBJS)
 	$(CC) $(CFLAGS) -o $(PROGRAM) $(OBJS)
@@ -50,9 +53,6 @@ init.o: common/init.c
 	$(CC) $(CFLAGS) -c common/init.c
 
 # calculations
-combination.o: calculations/combination.c
-	$(CC) $(CFLAGS) -c calculations/combination.c
-
 ratio.o: calculations/ratio.c
 	$(CC) $(CFLAGS) -c calculations/ratio.c
 

@@ -9,6 +9,7 @@
 #ifndef CUSTOMER_H
 #define CUSTOMER_H
 
+unsigned int customer_of(int level);
 int customer_arrival();
 
 #endif

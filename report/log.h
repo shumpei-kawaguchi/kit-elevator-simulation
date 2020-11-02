@@ -10,7 +10,7 @@
 #define LOG_H
 
 int new_log(int length);
-int log_write(int log_type, char *func, char *message);
+int log_write(int log_type, const char *func, char *message);
 int log_header();
 
 #endif

@@ -15,8 +15,10 @@
 #include "define.h"
 
 int init() {
-  char TAG[6] = "init";
-  log_write(0, TAG, "START");
+  const char *TAG = __func__;
+  log_write(0, TAG, START);
   for (int i = 0; i < LEVEL; i++) ratio_is(i, 0);
+  log_write(0, TAG, "Init ratio of level.");
+  log_write(0, TAG, END);
   return 0;
 }
