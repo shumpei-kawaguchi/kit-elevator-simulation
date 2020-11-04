@@ -13,34 +13,18 @@
 #include <string.h>
 #include <time.h>
 
-#include "../calculations/random.h"
-#include "../common/define.h"
+#include "file.h"
 
-static char type_name[3][7] = {"INFO", "ERROR", "DEBUG"};
-
-static char log_id[9] = "test";
-
-// Create random string for log file name.
-int new_log(int length) {
-  const char *TAG = __func__;
-  char chars[length + 2];
-  for (int i = 0; i < length; i++) {
-    chars[i] = getRandomCharLower();
-  }
-  strcpy(log_id, chars);
-  printf("log file is output/%s.log\n", log_id);
-  log_write(2, TAG, log_id);
-  return 0;
-}
+static const char type_name[3][7] = {"INFO", "ERROR", "DEBUG"};
 
 // Write log to .log file.
 // log_type 0 = "INFO", 1 = "ERROR", 2 = "DEBUG"
 int log_write(int log_type, const char *func, char *message) {
   log_header();
   FILE *outputfile;
-  char path[32] = "./output/";
-  strcat(path, log_id);
-  strcat(path, ".log");
+  char path[32] = "";
+  strcpy(path, file_path(0));
+  // File open.
   outputfile = fopen(path, "a");
   if (outputfile == NULL) {
     printf("cannot open file\n");
@@ -62,10 +46,9 @@ int log_header(void) {
                      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
   FILE *outputfile;
-  char path[32] = "./output/";
-  strcat(path, log_id);
-  strcat(path, ".log");
-  // File open
+  char path[32] = "";
+  strcpy(path, file_path(0));
+  // File open.
   outputfile = fopen(path, "a");
   if (outputfile == NULL) {
     printf("cannot open file");

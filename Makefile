@@ -9,7 +9,7 @@ TESTFLAGS     = -lgtest_main -lgtest
 INIT          = init.o
 CALCULATIONS  = ratio.o random.o
 QUEUE         = customer.o
-REPORT        = csv.o log.o
+REPORT        = csv.o log.o file.o
 #
 OBJS          = main.o $(INIT) $(CALCULATIONS) $(QUEUE) $(REPORT)
 OBJS_PATH     = compile/objs/
@@ -69,3 +69,6 @@ csv.o: report/csv.c
 
 log.o: report/log.c
 	$(CC) $(CFLAGS) -c report/log.c
+
+file.o: report/file.c
+	$(CC) $(CFLAGS) -c report/file.c

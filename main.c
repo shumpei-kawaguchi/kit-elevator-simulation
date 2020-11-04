@@ -15,13 +15,14 @@
 #include "common/define.h"
 #include "common/init.h"
 #include "queue/customer.h"
+#include "report/file.h"
 #include "report/log.h"
 
 static int iterations = 0;
 
 int setup(void) {
   const char *TAG = __func__;
-  new_log(7);
+  new_id(7);
   printf("[Setup] type iterations number.\n");
   scanf("%d", &iterations);
   log_write(0, TAG, "Finithed setup.");
