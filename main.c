@@ -15,6 +15,7 @@
 #include "common/define.h"
 #include "common/init.h"
 #include "queue/customer.h"
+#include "report/csv.h"
 #include "report/file.h"
 #include "report/log.h"
 
@@ -23,6 +24,7 @@ static int iterations = 0;
 int setup(void) {
   const char *TAG = __func__;
   new_id(7);
+  new_csv();
   printf("[Setup] type iterations number.\n");
   scanf("%d", &iterations);
   log_write(0, TAG, "Finithed setup.");
@@ -35,7 +37,10 @@ int main(void) {
   log_write(0, TAG, START);
   //
   for (int i = 0; i < iterations; i++) {
+    csv_d("%d,", i + 1);
     init();
+    // End loop.
+    csv_s("\n", "");
   }
   //
   log_write(0, TAG, END);

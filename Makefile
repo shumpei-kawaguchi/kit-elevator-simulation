@@ -28,6 +28,9 @@ clean:
 logrm:
 	rm -f output/*.log
 
+csvrm:
+	rm -f output/*.csv
+
 build: $(OBJS)
 	$(CC) $(CFLAGS) -o $(PROGRAM) $(OBJS)
 

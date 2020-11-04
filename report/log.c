@@ -56,30 +56,11 @@ int log_header(void) {
   }
 
   // Output Console and log file.
-  // MM-DD
-  fprintf(outputfile, "%s-%2d ", month[pnow->tm_mon], pnow->tm_mday);
-  printf("%s-%2d ", month[pnow->tm_mon], pnow->tm_mday);
-  // hh:
-  if (pnow->tm_hour < 10) {
-    fprintf(outputfile, "0");
-    printf("0");
-  }
-  fprintf(outputfile, "%d:", pnow->tm_hour);
-  printf("%d:", pnow->tm_hour);
-  // mm:
-  if (pnow->tm_min < 10) {
-    fprintf(outputfile, "0");
-    printf("0");
-  }
-  fprintf(outputfile, "%d:", pnow->tm_min);
-  printf("%d:", pnow->tm_min);
-  // ss
-  if (pnow->tm_sec < 10) {
-    fprintf(outputfile, "0");
-    printf("0");
-  }
-  fprintf(outputfile, "%d ", pnow->tm_sec);
-  printf("%d ", pnow->tm_sec);
+  // MMM-dd hh:mm:ss
+  fprintf(outputfile, "%s-%02d %02d:%02d:%02d ", month[pnow->tm_mon],
+          pnow->tm_mday, pnow->tm_hour, pnow->tm_min, pnow->tm_sec);
+  printf("%s-%02d %02d:%02d:%02d ", month[pnow->tm_mon], pnow->tm_mday,
+         pnow->tm_hour, pnow->tm_min, pnow->tm_sec);
 
   // File close
   fclose(outputfile);

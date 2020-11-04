@@ -4,6 +4,7 @@ kit-elevator-simulation
 .vs
 .vscode
 *.log
+*.csv
 # Prerequisites
 *.d
 
