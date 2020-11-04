@@ -10,6 +10,6 @@
 #define CUSTOMER_H
 
 unsigned int customer_of(int level);
-int customer_arrival();
+int customer_arrival(void);
 
 #endif

@@ -29,7 +29,7 @@ unsigned int customer_is(int level, int value) {
 }
 
 // Init customer queue.
-int customer_arrival() {
+int customer_arrival(void) {
   const char *TAG = __func__;
   log_write(0, TAG, START);
   int total = 0;

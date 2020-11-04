@@ -11,6 +11,6 @@
 
 int new_log(int length);
 int log_write(int log_type, const char *func, char *message);
-int log_header();
+int log_header(void);
 
 #endif

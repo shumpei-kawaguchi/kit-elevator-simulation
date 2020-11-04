@@ -14,7 +14,7 @@
 #include "../report/log.h"
 #include "define.h"
 
-int init() {
+int init(void) {
   const char *TAG = __func__;
   log_write(0, TAG, START);
   ratio_pattern();

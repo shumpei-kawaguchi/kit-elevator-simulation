@@ -35,7 +35,7 @@ unsigned int ratio_is(int level, int value) {
 }
 
 // Set ratio pattern.
-int ratio_pattern() {
+int ratio_pattern(void) {
   const char *TAG = __func__;
   log_write(0, TAG, START);
   int classroom = CLASS;
