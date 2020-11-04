@@ -13,6 +13,8 @@
 #include <string.h>
 #include <time.h>
 
+#include "../report/log.h"
+
 // Make random number of nin to max.
 // [NO LOG OUTPUT]
 int genRand(int min, int max) {
@@ -30,7 +32,7 @@ int genRand(int min, int max) {
 // "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".
 // [NO LOG OUTPUT]
 char getRandomCharLower(void) {
-  const char CHARS[64] =
+  const char *CHARS =
       "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
   int index = genRand(0, (strlen(CHARS) - 1));
   char c = CHARS[index];

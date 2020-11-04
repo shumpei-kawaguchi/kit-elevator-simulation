@@ -6,6 +6,8 @@
 //  Copyright (c) 2020 Shumpei Kawaguchi. All rights reserved.
 //
 
+#include "main.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -15,21 +17,25 @@
 #include "queue/customer.h"
 #include "report/log.h"
 
-int main(void) {
-  char TAG[] = "main";
-  //
+static int iterations = 0;
+
+int setup(void) {
+  const char *TAG = __func__;
   new_log(7);
+  printf("[Setup] type iterations number.\n");
+  scanf("%d", &iterations);
+  log_write(0, TAG, "Finithed setup.");
+  return 0;
+}
+
+int main(void) {
+  const char *TAG = __func__;
+  setup();
   log_write(0, TAG, START);
-  init();
   //
-  ratio_pattern();
-  //
-  int total = 0;
-  for (int i = 0; i < LEVEL; i++) {
-    total += ratio_of(i);
-    printf("%d\t", ratio_of(i));
+  for (int i = 0; i < iterations; i++) {
+    init();
   }
-  printf("total = %d\n", total);
   //
   log_write(0, TAG, END);
   exit(0);

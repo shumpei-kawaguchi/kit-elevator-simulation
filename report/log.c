@@ -47,7 +47,8 @@ int log_write(int log_type, const char *func, char *message) {
     exit(1);
   }
 
-  fprintf(outputfile, "%s/[%s] %s", type_name[log_type], func, message);
+  fprintf(outputfile, "%s/[%s] %s\n", type_name[log_type], func, message);
+  printf("%s/[%s] %s\n", type_name[log_type], func, message);
   fclose(outputfile);
   return 0;
 }
@@ -64,20 +65,40 @@ int log_header() {
   char path[32] = "./output/";
   strcat(path, log_id);
   strcat(path, ".log");
+  // File open
   outputfile = fopen(path, "a");
   if (outputfile == NULL) {
     printf("cannot open file");
     exit(1);
   }
 
-  fprintf(outputfile, "\n%s-%2d ", month[pnow->tm_mon], pnow->tm_mday);
-
-  if (pnow->tm_hour < 10) fprintf(outputfile, "0");
+  // Output Console and log file.
+  // MM-DD
+  fprintf(outputfile, "%s-%2d ", month[pnow->tm_mon], pnow->tm_mday);
+  printf("%s-%2d ", month[pnow->tm_mon], pnow->tm_mday);
+  // hh:
+  if (pnow->tm_hour < 10) {
+    fprintf(outputfile, "0");
+    printf("0");
+  }
   fprintf(outputfile, "%d:", pnow->tm_hour);
-  if (pnow->tm_min < 10) fprintf(outputfile, "0");
+  printf("%d:", pnow->tm_hour);
+  // mm:
+  if (pnow->tm_min < 10) {
+    fprintf(outputfile, "0");
+    printf("0");
+  }
   fprintf(outputfile, "%d:", pnow->tm_min);
-  if (pnow->tm_sec < 10) fprintf(outputfile, "0");
+  printf("%d:", pnow->tm_min);
+  // ss
+  if (pnow->tm_sec < 10) {
+    fprintf(outputfile, "0");
+    printf("0");
+  }
   fprintf(outputfile, "%d ", pnow->tm_sec);
+  printf("%d ", pnow->tm_sec);
+
+  // File close
   fclose(outputfile);
   return 0;
 }
