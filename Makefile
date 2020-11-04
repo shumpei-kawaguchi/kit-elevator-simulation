@@ -22,6 +22,9 @@ all: $(PROGRAM)
 $(PROGRAM): $(OBJS)
 	$(CC) $(CFLAGS) $(OUTPUT_OPTION) $(OBJS)
 
+ca:
+	make clean logrm csvrm
+
 clean:
 	rm -f *.o *.out *~ $(PROGRAM)
 
