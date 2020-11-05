@@ -10,8 +10,9 @@ INIT          = init.o
 CALCULATIONS  = ratio.o random.o
 QUEUE         = customer.o
 REPORT        = csv.o log.o file.o
+ELEVATOR      = move.o
 #
-OBJS          = main.o $(INIT) $(CALCULATIONS) $(QUEUE) $(REPORT)
+OBJS          = main.o $(INIT) $(CALCULATIONS) $(QUEUE) $(REPORT) $(ELEVATOR)
 OBJS_PATH     = compile/objs/
 PROGRAM       = kit-elevator-simulation
 
@@ -78,3 +79,7 @@ log.o: report/log.c
 
 file.o: report/file.c
 	$(CC) $(CFLAGS) -c report/file.c
+
+#elevator
+move.o: elevator/move.c
+	$(CC) $(CFLAGS) -c elevator/move.c
