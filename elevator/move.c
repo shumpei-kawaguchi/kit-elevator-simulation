@@ -22,8 +22,12 @@ double move(int* box) {
   for (int i = 0; i < LEVEL; i++) {
     printf("%d\n", destinations[i]);
   }
-
   // 移動時間
+  for (int i = 0; i < LEVEL; i++) {
+    if (0 < destinations[i]) {
+    }
+  }
+
   //
   return result;
 }

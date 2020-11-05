@@ -14,6 +14,7 @@
 #include "calculations/ratio.h"
 #include "common/define.h"
 #include "common/init.h"
+#include "elevator/move.h"
 #include "queue/customer.h"
 #include "report/csv.h"
 #include "report/file.h"
@@ -23,6 +24,8 @@ static int iterations = 0;
 
 int setup(void) {
   const char *TAG = __func__;
+  int box[10] = {0, 5, 2, 2, 5, 0, 2, 0, 2, 5};
+  move(box);
   new_id(7);
   new_csv();
   printf("[Setup] type iterations number.\n");
