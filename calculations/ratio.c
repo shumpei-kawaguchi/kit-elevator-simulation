@@ -16,7 +16,7 @@
 #include "../report/log.h"
 #include "random.h"
 
-static int classroom_of_level[LEVEL] = {1, 3, 3, 3, 2, 2, 1};
+static const int classroom_of_level[LEVEL] = {1, 3, 3, 3, 2, 2, 1};
 static int ratio_of_level[LEVEL] = {};
 
 // Return classroom of level.
