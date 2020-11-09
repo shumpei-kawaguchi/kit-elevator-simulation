@@ -16,6 +16,11 @@
 #include "log.h"
 
 static const char file_type[2][6] = {".log", ".csv"};
+static const char month_string[12][5] = {"Jan", "Feb", "Mar", "Apr",
+                                         "May", "Jun", "Jul", "Aug",
+                                         "Sep", "Oct", "Nov", "Dec"};
+
+const char *month(int month) { return month_string[month]; }
 
 static char id[9] = "test";
 static char output_path[32] = "";

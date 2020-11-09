@@ -42,8 +42,6 @@ int log_write(int log_type, const char *func, char *message) {
 int log_header(void) {
   time_t now = time(NULL);
   struct tm *pnow = localtime(&now);
-  char month[][5] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
   FILE *outputfile;
   char path[32] = "";
@@ -57,9 +55,9 @@ int log_header(void) {
 
   // Output Console and log file.
   // MMM-dd hh:mm:ss
-  fprintf(outputfile, "%s-%02d %02d:%02d:%02d ", month[pnow->tm_mon],
+  fprintf(outputfile, "%s-%02d %02d:%02d:%02d ", month(pnow->tm_mon),
           pnow->tm_mday, pnow->tm_hour, pnow->tm_min, pnow->tm_sec);
-  printf("%s-%02d %02d:%02d:%02d ", month[pnow->tm_mon], pnow->tm_mday,
+  printf("%s-%02d %02d:%02d:%02d ", month(pnow->tm_mon), pnow->tm_mday,
          pnow->tm_hour, pnow->tm_min, pnow->tm_sec);
 
   // File close

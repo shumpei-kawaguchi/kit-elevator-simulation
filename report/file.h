@@ -9,6 +9,7 @@
 #ifndef FILE_H
 #define FILE_H
 
+const char *month(int month);
 int new_id(int length);
 char *file_path(int modifier);
 

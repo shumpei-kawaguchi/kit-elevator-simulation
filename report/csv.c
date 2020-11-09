@@ -29,13 +29,11 @@ int new_csv(void) {
   }
 
   // Get time.
-  char month[][5] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
   time_t now = time(NULL);
   struct tm *pnow = localtime(&now);
   // Output Console and log file.
   // MM-DD,hh,mm,ss
-  fprintf(file, "%s-%02d,%02d:%02d:%02d\n", month[pnow->tm_mon], pnow->tm_mday,
+  fprintf(file, "%s-%02d,%02d:%02d:%02d\n", month(pnow->tm_mon), pnow->tm_mday,
           pnow->tm_hour, pnow->tm_min, pnow->tm_sec);
 
   // Imput define.
