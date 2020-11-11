@@ -22,7 +22,6 @@ static unsigned int customer_queue[LEVEL] = {};
 int get_in_box(void) {
   bool condition = false;
   int destination = 0;
-
   do {
     destination = genRand(0, LEVEL - 1);
     if (customer_queue[destination] != 0) {
@@ -45,7 +44,7 @@ int customer_arrival(void) {
   }
 
   if (CLASS * NUMBER_OF_PEOPLE - total != 0) {
-    log_write(1, TAG, "Wrong total. EXIT code 1.");
+    log_write(1, TAG, "Wrong total. EXIT code 1.\n");
     exit(1);
   }
   log_write(0, TAG, END);

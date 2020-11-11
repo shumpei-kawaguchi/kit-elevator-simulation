@@ -30,7 +30,7 @@ int setup(void) {
   new_csv();
   printf("[Setup] type iterations number.\n");
   scanf("%d", &iterations);
-  log_write(0, TAG, "Finithed setup.");
+  log_write(0, TAG, "Finithed setup.\n");
   return 0;
 }
 
@@ -48,11 +48,13 @@ int main(void) {
       box[i] = get_in_box();
     }
     // LOG
-    printf("Box = ");
+    log_write(0, TAG, "Customer get in the box!\n");
+    log_write(0, TAG, "Box = ");
     for (int i = 0; i < BOX; i++) {
-      printf("%d", box[i] + 3);
+      log_d("%d", box[i] + 3);
+      // printf("%d", box[i] + 3);
     }
-    printf("\n");
+    log_d("\n", 0);
     move(box);
     // End loop.
     csv_s("\n", "");

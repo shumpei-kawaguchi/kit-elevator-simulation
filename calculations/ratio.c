@@ -40,10 +40,10 @@ int ratio_pattern(void) {
   log_write(0, TAG, START);
   int classroom = CLASS;
   int total = 0;
-  log_write(0, TAG, "Init classroom, total.");
+  log_write(0, TAG, "Init classroom, total.\n");
 
   // Randomly determine the ratio of each level.
-  log_write(0, TAG, "Make randomly ratio of each level.");
+  log_write(0, TAG, "Make randomly ratio of each level.\n");
   for (int i = 0; i < LEVEL; i++) {
     int max = 0;
     int min = 0;
@@ -54,12 +54,12 @@ int ratio_pattern(void) {
     ratio_is(i, classroom_ratio(i, min, classroom));
     classroom -= ratio_of(i);
   }
-  log_write(0, TAG, "Done randomly ratio.");
+  log_write(0, TAG, "Done randomly ratio.\n");
 
   // Check total value.
   for (int i = 0; i < LEVEL; i++) total += ratio_of(i);
   if (CLASS - total != 0) {
-    log_write(1, TAG, "Wrong total. EXIT code 1.");
+    log_write(1, TAG, "Wrong total. EXIT code 1.\n");
     exit(1);
   }
   log_write(0, TAG, END);

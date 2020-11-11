@@ -13,8 +13,6 @@
 #include <string.h>
 #include <time.h>
 
-#include "../report/log.h"
-
 // Make random number of nin to max.
 // [NO LOG OUTPUT]
 int genRand(int min, int max) {

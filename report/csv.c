@@ -39,12 +39,12 @@ int new_csv(void) {
   // Imput define.
   fprintf(file, "LEVEL=%d,CLASS=%d,NUMBER_OF_PEOPLE=%d\n", LEVEL, CLASS,
           NUMBER_OF_PEOPLE);
-  fprintf(file, "Classroom,");
+  fprintf(file, "Classrooms,");
   for (int i = 0; i < LEVEL; i++)
     fprintf(file, "%dF=%d,", i + 3, classroom_of(i));
   fprintf(file, "\n");
   // Input Category.
-  fprintf(file, "Number,Combination,Total\n");
+  fprintf(file, "Number,Combination,Total, Round trip for, Final result\n");
   // File close
   fclose(file);
   return 0;

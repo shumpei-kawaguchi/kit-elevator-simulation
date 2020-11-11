@@ -26,7 +26,6 @@ static char id[9] = "test";
 static char output_path[32] = "";
 
 int new_id(int length) {
-  const char *TAG = __func__;
   char chars[length + 2];
   for (int i = 0; i < length; i++) {
     chars[i] = getRandomCharLower();
@@ -34,7 +33,6 @@ int new_id(int length) {
   strcpy(id, chars);
   printf("log file is output/%s.log\n", id);
   // Make path
-  log_write(2, TAG, id);
   return 0;
 }
 

@@ -38,6 +38,9 @@ csvrm:
 build: $(OBJS)
 	$(CC) $(CFLAGS) -o $(PROGRAM) $(OBJS)
 
+run:
+	./$(PROGRAM)
+
 # Test =================================
 test:
 	$(CXX) -std=c++11 test/test.cpp $(TESTFLAGS)

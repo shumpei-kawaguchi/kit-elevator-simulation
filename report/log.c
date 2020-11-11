@@ -30,9 +30,28 @@ int log_write(int log_type, const char *func, char *message) {
     printf("cannot open file\n");
     exit(1);
   }
+  // File write.
+  fprintf(outputfile, "%s/[%s] %s", type_name[log_type], func, message);
+  printf("%s/[%s] %s", type_name[log_type], func, message);
+  // File close.
+  fclose(outputfile);
+  return 0;
+}
 
-  fprintf(outputfile, "%s/[%s] %s\n", type_name[log_type], func, message);
-  printf("%s/[%s] %s\n", type_name[log_type], func, message);
+int log_d(char *message, int value) {
+  FILE *outputfile;
+  char path[32] = "";
+  strcpy(path, file_path(0));
+  // File open.
+  outputfile = fopen(path, "a");
+  if (outputfile == NULL) {
+    printf("cannot open file\n");
+    exit(1);
+  }
+  // File write.
+  fprintf(outputfile, message, value);
+  printf(message, value);
+  // File
   fclose(outputfile);
   return 0;
 }

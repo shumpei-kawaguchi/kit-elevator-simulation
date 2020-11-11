@@ -29,7 +29,7 @@ int init(void) {
   }
   printf("total = %d\n", total);
   csv_d(",%d,", total);
-  log_write(0, TAG, "Init ratio of level.");
+  log_write(0, TAG, "Init ratio of level.\n");
   log_write(0, TAG, END);
   return 0;
 }
