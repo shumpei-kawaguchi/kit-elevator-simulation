@@ -1,3 +1,11 @@
+#
+#  Makefile
+#  kit-elevator-simulation
+#
+#  Created by Shumpei Kawaguchi on 2020/10/20.
+#  Copyright (c) 2020 Shumpei Kawaguchi. All rights reserved.
+#
+
 CC            = gcc
 CFLAGS        = -std=c11 -g -Wall
 DIR           = calculations
