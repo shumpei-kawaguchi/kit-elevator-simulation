@@ -14,5 +14,6 @@
 #define LEVEL 7
 #define CLASS 10
 #define NUMBER_OF_PEOPLE 50
+#define BOX 10
 
 #endif

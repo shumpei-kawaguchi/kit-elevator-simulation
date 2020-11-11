@@ -20,7 +20,7 @@ double move(int* box) {
     destinations[box[i]] += 1;
   }
   for (int i = 0; i < LEVEL; i++) {
-    printf("%d\n", destinations[i]);
+    printf("Level %d = %d\n", i + 3, destinations[i]);
   }
   // 移動時間
   for (int i = 0; i < LEVEL; i++) {

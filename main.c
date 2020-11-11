@@ -42,6 +42,18 @@ int main(void) {
   for (int i = 0; i < iterations; i++) {
     csv_d("%d,", i + 1);
     init();
+    customer_arrival();
+    int box[BOX] = {};
+    for (int i = 0; i < BOX; i++) {
+      box[i] = get_in_box();
+    }
+    // LOG
+    printf("Box = ");
+    for (int i = 0; i < BOX; i++) {
+      printf("%d", box[i] + 3);
+    }
+    printf("\n");
+    move(box);
     // End loop.
     csv_s("\n", "");
   }

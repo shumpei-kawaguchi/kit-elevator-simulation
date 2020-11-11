@@ -8,24 +8,29 @@
 
 #include "customer.h"
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "../calculations/random.h"
 #include "../calculations/ratio.h"
 #include "../common/define.h"
 #include "../report/log.h"
 
 static unsigned int customer_queue[LEVEL] = {};
 
-// Return customer of level in queue.
-// [NO LOG OUTPUT]
-unsigned int customer_of(int level) { return customer_queue[level]; }
+int get_in_box(void) {
+  bool condition = false;
+  int destination = 0;
 
-// Set customer of level.
-// [NO LOG OUTPUT]
-unsigned int customer_is(int level, int value) {
-  customer_queue[level] = value;
-  return customer_queue[level];
+  do {
+    destination = genRand(0, LEVEL - 1);
+    if (customer_queue[destination] != 0) {
+      customer_queue[destination] -= 1;
+      condition = true;
+    }
+  } while (condition != true);
+  return destination;
 }
 
 // Init customer queue.
