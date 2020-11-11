@@ -8,7 +8,7 @@ TESTFLAGS     = -lgtest_main -lgtest
 # Files
 INIT          = init.o
 CALCULATIONS  = ratio.o random.o
-QUEUE         = customer.o
+QUEUE         = elevator.o customer.o
 REPORT        = csv.o log.o file.o
 ELEVATOR      = move.o
 #
@@ -84,5 +84,7 @@ file.o: report/file.c
 	$(CC) $(CFLAGS) -c report/file.c
 
 #elevator
+elevator.o: elevator/elevator.c
+	$(CC) $(CFLAGS) -c elevator/elevator.c
 move.o: elevator/move.c
 	$(CC) $(CFLAGS) -c elevator/move.c

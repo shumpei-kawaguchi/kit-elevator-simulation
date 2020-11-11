@@ -14,6 +14,7 @@
 #include "calculations/ratio.h"
 #include "common/define.h"
 #include "common/init.h"
+#include "elevator/elevator.h"
 #include "elevator/move.h"
 #include "queue/customer.h"
 #include "report/csv.h"
@@ -42,20 +43,7 @@ int main(void) {
   for (int i = 0; i < iterations; i++) {
     csv_d("%d,", i + 1);
     init();
-    customer_arrival();
-    int box[BOX] = {};
-    for (int i = 0; i < BOX; i++) {
-      box[i] = get_in_box();
-    }
-    // LOG
-    log_write(0, TAG, "Customer get in the box!\n");
-    log_write(0, TAG, "Box = ");
-    for (int i = 0; i < BOX; i++) {
-      log_d("%d", box[i] + 3);
-      // printf("%d", box[i] + 3);
-    }
-    log_d("\n", 0);
-    move(box);
+    elevator_system();
     // End loop.
     csv_s("\n", "");
   }
