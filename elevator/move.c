@@ -23,11 +23,20 @@ double move(int* box) {
     printf("Level %d = %d\n", i + 3, destinations[i]);
   }
   // 移動時間
+  int start_position = -2;
   for (int i = 0; i < LEVEL; i++) {
-    if (0 < destinations[i]) {
+    if (0 < destinations[i]) {  // i階に行く人がいれば...
+      result += time[-(start_position - i) - 1];
+      printf("result = %lf\n", result);
+
+      start_position = i;
     }
   }
+  printf("result2 = %lf\n", result);
 
-  //
+  result += time[start_position + 1];
+
+  printf("start = %d\n", start_position);
+
   return result;
 }
