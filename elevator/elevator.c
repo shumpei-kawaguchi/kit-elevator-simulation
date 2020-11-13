@@ -34,7 +34,7 @@ double elevator_system(void) {
   }
   log_d("\n", 0);
   // LOG end.
-  result += move(box);
+  result += move(box);  // Transport box.
   // Loop end.
 
   // return final result.
