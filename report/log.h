@@ -11,6 +11,7 @@
 
 int log_write(int log_type, const char *func, char *message);
 int log_d(char *message, int value);
+int log_lf(char *message, double value);
 int log_header(void);
 
 #endif

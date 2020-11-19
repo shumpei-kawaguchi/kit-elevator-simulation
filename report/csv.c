@@ -37,14 +37,14 @@ int new_csv(void) {
           pnow->tm_hour, pnow->tm_min, pnow->tm_sec);
 
   // Imput define.
-  fprintf(file, "LEVEL=%d,CLASS=%d,NUMBER_OF_PEOPLE=%d\n", LEVEL, CLASS,
-          NUMBER_OF_PEOPLE);
+  fprintf(file, "LEVEL=%d,CLASS=%d,NUMBER_OF_PEOPLE=%d,BOX=%d\n", LEVEL, CLASS,
+          NUMBER_OF_PEOPLE, BOX);
   fprintf(file, "Classrooms,");
   for (int i = 0; i < LEVEL; i++)
     fprintf(file, "%dF=%d,", i + 3, classroom_of(i));
   fprintf(file, "\n");
   // Input Category.
-  fprintf(file, "Number,Combination,Total, Round trip for, Final result\n");
+  fprintf(file, "Number,Combination,Service average,P1,P2,Final result\n");
   // File close
   fclose(file);
   return 0;

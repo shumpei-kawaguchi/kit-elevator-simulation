@@ -16,9 +16,8 @@ TESTFLAGS     = -lgtest_main -lgtest
 # Files
 INIT          = init.o
 CALCULATIONS  = ratio.o random.o factanal.o
-QUEUE         = elevator.o customer.o
 REPORT        = csv.o log.o file.o
-ELEVATOR      = move.o
+ELEVATOR      = move.o elevator.o customer.o
 #
 OBJS          = main.o $(INIT) $(CALCULATIONS) $(QUEUE) $(REPORT) $(ELEVATOR)
 OBJS_PATH     = compile/objs/
@@ -80,10 +79,6 @@ random.o: calculations/random.c
 factanal.o: calculations/factanal.c
 	$(CC) $(CFLAGS) -c calculations/factanal.c
 
-# queue
-customer.o: queue/customer.c
-	$(CC) $(CFLAGS) -c queue/customer.c
-
 #report
 csv.o: report/csv.c
 	$(CC) $(CFLAGS) -c report/csv.c
@@ -97,5 +92,9 @@ file.o: report/file.c
 #elevator
 elevator.o: elevator/elevator.c
 	$(CC) $(CFLAGS) -c elevator/elevator.c
+
 move.o: elevator/move.c
 	$(CC) $(CFLAGS) -c elevator/move.c
+
+customer.o: elevator/customer.c
+	$(CC) $(CFLAGS) -c elevator/customer.c

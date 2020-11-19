@@ -15,9 +15,9 @@
 #include "calculations/ratio.h"
 #include "common/define.h"
 #include "common/init.h"
+#include "elevator/customer.h"
 #include "elevator/elevator.h"
 #include "elevator/move.h"
-#include "queue/customer.h"
 #include "report/csv.h"
 #include "report/file.h"
 #include "report/log.h"
@@ -43,16 +43,26 @@ int main(void) {
   for (int i = 0; i < iterations; i++) {
     csv_d("%d,", i + 1);
     init();
-    double result = service_average();
-    printf("result = %lf\n", result);
-    csv_lf(",%lf", result);
+    double average = service_average();
+
+    // １秒当たりの、到着率
     double p1 = (double)(CLASS * NUMBER_OF_PEOPLE) / (10 * 60);
-    printf("p1 = %lf\n", p1);
-    double p2 = 1 / result / 10;
+    // １秒当たりの、サービス率
+    double p2 = 1 / (average / BOX);
 
     double final_result = elevator_system(p1, p2);
-    csv_lf(",%lf", final_result);
-    csv_s("\n", "");
+
+    log_write(0, TAG, "");
+    log_lf("Result = %lf, ", average);
+    log_lf("p1 = %lf, ", p1);
+    log_lf("p2 = %lf\n", p2);
+    log_write(0, TAG, "");
+    log_lf("Final result = %lf\n", final_result);
+
+    csv_lf(",%lf", average);
+    csv_lf(",%lf", p1);
+    csv_lf(",%lf", p2);
+    csv_lf(",%lf\n", final_result);
   }
   //
   log_write(0, TAG, END);

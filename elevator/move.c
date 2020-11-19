@@ -16,12 +16,9 @@ double move(int* box) {
   double result = 0.0;
   // 何階に止まるか
   int destinations[LEVEL] = {};
-  for (int i = 0; i < 10; i++) {
+  for (int i = 0; i < BOX; i++) {
     destinations[box[i]] += 1;
   }
-  // for (int i = 0; i < LEVEL; i++) {
-  //   printf("Level %d = %d\n", i + 3, destinations[i]);
-  // }
   // 移動時間
   int start_position = -2;
   for (int i = 0; i < LEVEL; i++) {
@@ -32,6 +29,5 @@ double move(int* box) {
     }
   }
   result += time[start_position + 1];
-  // printf("back = %d\n", start_position);
   return result;
 }

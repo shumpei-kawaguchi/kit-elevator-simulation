@@ -13,7 +13,7 @@
 
 #include "../calculations/ratio.h"
 #include "../common/define.h"
-#include "../queue/customer.h"
+#include "../elevator/customer.h"
 #include "../report/log.h"
 #include "move.h"
 
@@ -21,30 +21,19 @@
 
 double service_average(void) {
   const char *TAG = __func__;
+  log_write(0, TAG, START);
   int n = 100;
   double result = 0.0;
 
-  // MARK: Calculate average
   for (int i = 0; i < n; i++) {
-    // Get in the box.
     int box[BOX] = {};
     for (int i = 0; i < BOX; i++) {
       box[i] = get_in_box();
     }
-    result += move(box);  // Transport box.
+    result += move(box);
   }
-
   result /= n;
-  // // LOG
-  // log_write(0, TAG, "Box = ");
-  // for (int i = 0; i < BOX; i++) {
-  //   log_d("%d", box[i] + 3);
-  // }
-  // log_d("\n", 0);
-  // // LOG end.
-  // Loop end.
-
-  // return final result.
+  log_write(0, TAG, END);
   return result;
 }
 
@@ -61,7 +50,6 @@ double elevator_system(double p1, double p2) {
     }
 
     if (Rand() < p1) {
-      printf("q\n");
       queue++;
     }
 
@@ -69,8 +57,6 @@ double elevator_system(double p1, double p2) {
     total_queue += queue;
   }
 
-  printf("rand = %ld, %d\n", total_queue, p1);
   double result = (double)total_queue / time;
-  printf("Average = %lf\n", result);
   return result;
 }

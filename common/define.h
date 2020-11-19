@@ -12,8 +12,8 @@
 #define START "--START--\n"
 #define END "--END--\n"
 #define LEVEL 7
-#define CLASS 10
+#define CLASS 7
 #define NUMBER_OF_PEOPLE 50
-#define BOX 10
+#define BOX 4
 
 #endif

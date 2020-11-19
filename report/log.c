@@ -56,6 +56,24 @@ int log_d(char *message, int value) {
   return 0;
 }
 
+int log_lf(char *message, double value) {
+  FILE *outputfile;
+  char path[32] = "";
+  strcpy(path, file_path(0));
+  // File open.
+  outputfile = fopen(path, "a");
+  if (outputfile == NULL) {
+    printf("cannot open file\n");
+    exit(1);
+  }
+  // File write.
+  fprintf(outputfile, message, value);
+  printf(message, value);
+  // File
+  fclose(outputfile);
+  return 0;
+}
+
 // Write log header.
 // MM-dd hh:mm:ss
 int log_header(void) {
