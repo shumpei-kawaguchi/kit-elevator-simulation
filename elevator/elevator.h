@@ -9,6 +9,7 @@
 #ifndef ELEVATOR_H
 #define ELEVATOR_H
 
-double elevator_system(void);
+double service_average(void);
+double elevator_system(double p1, double p2);
 
 #endif
