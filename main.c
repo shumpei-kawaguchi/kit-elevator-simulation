@@ -43,9 +43,15 @@ int main(void) {
   for (int i = 0; i < iterations; i++) {
     csv_d("%d,", i + 1);
     init();
-    double result = elevator_system();
+    double result = service_average();
     printf("result = %lf\n", result);
     csv_lf(",%lf", result);
+    double p1 = (double)(CLASS * NUMBER_OF_PEOPLE) / (10 * 60);
+    printf("p1 = %lf\n", p1);
+    double p2 = 1 / result / 10;
+
+    double final_result = elevator_system(p1, p2);
+    csv_lf(",%lf", final_result);
     csv_s("\n", "");
   }
   //

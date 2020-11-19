@@ -9,6 +9,7 @@
 #include "elevator.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "../calculations/ratio.h"
 #include "../common/define.h"
@@ -16,7 +17,9 @@
 #include "../report/log.h"
 #include "move.h"
 
-double elevator_system(void) {
+#define Rand() ((double)rand() / RAND_MAX)
+
+double service_average(void) {
   const char *TAG = __func__;
   int n = 100;
   double result = 0.0;
@@ -42,5 +45,32 @@ double elevator_system(void) {
   // Loop end.
 
   // return final result.
+  return result;
+}
+
+double elevator_system(double p1, double p2) {
+  int time = 0;
+  int queue = 0;
+  int total_queue = 0;
+
+  while (time < 1000) {
+    if (queue != 0) {
+      if (Rand() < p2) {
+        queue--;
+      }
+    }
+
+    if (Rand() < p1) {
+      printf("q\n");
+      queue++;
+    }
+
+    time++;
+    total_queue += queue;
+  }
+
+  printf("rand = %ld, %d\n", total_queue, p1);
+  double result = (double)total_queue / time;
+  printf("Average = %lf\n", result);
   return result;
 }
