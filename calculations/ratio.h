@@ -14,6 +14,5 @@ unsigned int ratio_of(int level);
 unsigned int ratio_is(int level, int value);
 
 int ratio_pattern(void);
-int classroom_ratio(int n, int include, int classroom);
 
 #endif

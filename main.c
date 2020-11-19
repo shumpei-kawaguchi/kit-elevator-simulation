@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "calculations/factanal.h"
 #include "calculations/ratio.h"
 #include "common/define.h"
 #include "common/init.h"
@@ -25,8 +26,6 @@ static int iterations = 0;
 
 int setup(void) {
   const char *TAG = __func__;
-  int box[10] = {0, 5, 2, 2, 5, 0, 2, 0, 2, 5};
-  move(box);
   new_id(7);
   new_csv();
   printf("[Setup] type iterations number.\n");
@@ -36,6 +35,7 @@ int setup(void) {
 }
 
 int main(void) {
+  // printf("%d\n", factanal(1));
   const char *TAG = __func__;
   setup();
   log_write(0, TAG, START);
@@ -43,8 +43,9 @@ int main(void) {
   for (int i = 0; i < iterations; i++) {
     csv_d("%d,", i + 1);
     init();
-    elevator_system();
-    // End loop.
+    double result = elevator_system();
+    printf("result = %lf\n", result);
+    csv_lf(",%lf", result);
     csv_s("\n", "");
   }
   //

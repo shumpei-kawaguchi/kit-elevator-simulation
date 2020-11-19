@@ -10,6 +10,5 @@
 #define CUSTOMER_H
 
 int get_in_box(void);
-int customer_arrival(void);
 
 #endif

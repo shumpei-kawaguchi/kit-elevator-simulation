@@ -20,15 +20,14 @@ int init(void) {
   log_write(0, TAG, START);
   // Make ratio pattern.
   ratio_pattern();
-  int total = 0;
-  // Count total and report.
-  for (int i = 0; i < LEVEL; i++) {
-    total += ratio_of(i);
-    printf("%d\t", ratio_of(i));
-    csv_d("%d", ratio_of(i));
+  // report.
+  int combination[LEVEL] = {};
+  for (int i = 0; i < CLASS; i++) {
+    combination[ratio_of(i)] += 1;
   }
-  printf("total = %d\n", total);
-  csv_d(",%d,", total);
+  for (int i = 0; i < LEVEL; i++) {
+    csv_d("%d", combination[i]);
+  }
   log_write(0, TAG, "Init ratio of level.\n");
   log_write(0, TAG, END);
   return 0;

@@ -15,7 +15,7 @@ TESTFLAGS     = -lgtest_main -lgtest
 
 # Files
 INIT          = init.o
-CALCULATIONS  = ratio.o random.o
+CALCULATIONS  = ratio.o random.o factanal.o
 QUEUE         = elevator.o customer.o
 REPORT        = csv.o log.o file.o
 ELEVATOR      = move.o
@@ -76,6 +76,9 @@ ratio.o: calculations/ratio.c
 
 random.o: calculations/random.c
 	$(CC) $(CFLAGS) -c calculations/random.c
+
+factanal.o: calculations/factanal.c
+	$(CC) $(CFLAGS) -c calculations/factanal.c
 
 # queue
 customer.o: queue/customer.c
