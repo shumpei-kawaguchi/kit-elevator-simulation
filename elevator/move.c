@@ -10,7 +10,7 @@
 
 #include "../common/define.h"
 
-static const double time[8] = {1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0};
+static const double time[8] = {12.2, 15.3, 18.4, 20.7, 22.7, 24.9, 27.1, 29.3};
 
 double move(int* box) {
   double result = 0.0;
