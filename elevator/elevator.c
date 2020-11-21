@@ -8,44 +8,17 @@
 
 #include "elevator.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-
-#include "../calculations/ratio.h"
-#include "../common/define.h"
-#include "../elevator/customer.h"
-#include "../report/log.h"
-#include "move.h"
-
-#define Rand() ((double)rand() / RAND_MAX)
-
-double service_average(void) {
-  const char *TAG = __func__;
-  log_write(0, TAG, START);
-  int n = 100;
-  double result = 0.0;
-
-  for (int i = 0; i < n; i++) {
-    int box[BOX] = {};
-    for (int i = 0; i < BOX; i++) {
-      box[i] = get_in_box();
-    }
-    result += move(box);
-  }
-  result /= n;
-  log_write(0, TAG, END);
-  return result;
-}
-
 double elevator_system(double p1, double p2) {
   int time = 0;
   int queue = 0;
   int total_queue = 0;
 
-  while (time < 1000) {
-    if (queue != 0) {
-      if (Rand() < p2) {
-        queue--;
+  while (time < END_TIME) {
+    for (int i = 0; i < SERVER; i++) {
+      if (queue != 0) {
+        if (Rand() < p2) {
+          queue--;
+        }
       }
     }
 

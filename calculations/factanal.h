@@ -9,6 +9,14 @@
 #ifndef FACTANAL_H
 #define FACTANAL_H
 
-int factanal(int x);
+inline int factanal(int x) {
+  int f = x;
+  while (1) {
+    x--;
+    if (x < 2) break;
+    f = f * x;
+  }
+  return f;
+}
 
 #endif

@@ -9,7 +9,19 @@
 #ifndef RANDOM_H
 #define RANDOM_H
 
-int genRand(int min, int max);
-char getRandomCharLower(void);
+#include <stdlib.h>
+#include <time.h>
+
+static inline double Rand() { return ((double)rand() / RAND_MAX); };
+
+static inline int genRand(int min, int max) {
+  static int flag;
+  if (flag == 0) {
+    srand((unsigned int)time(NULL));
+    rand();
+    flag = 1;
+  }
+  return min + (int)(rand() * (max - min + 1.0) / (1.0 + RAND_MAX));
+}
 
 #endif

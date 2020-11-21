@@ -9,6 +9,8 @@
 #ifndef CSV_H
 #define CSV_H
 
+#include "file.h"
+
 int new_csv(void);
 int csv_s(char *string, char *value);
 int csv_d(char *string, int value);

@@ -7,17 +7,17 @@
 #
 
 CC            = gcc
-CFLAGS        = -std=c11 -g -Wall
+CFLAGS        = -std=c11 -g -Wall -O2
 DIR           = calculations
 
 CXX           = g++
 TESTFLAGS     = -lgtest_main -lgtest
 
 # Files
-INIT          = init.o
-CALCULATIONS  = ratio.o random.o factanal.o
-REPORT        = csv.o log.o file.o
-ELEVATOR      = move.o elevator.o customer.o
+INIT          = init.o global.o
+CALCULATIONS  =
+REPORT        = csv.o log.o
+ELEVATOR      = elevator.o
 #
 OBJS          = main.o $(INIT) $(CALCULATIONS) $(QUEUE) $(REPORT) $(ELEVATOR)
 OBJS_PATH     = compile/objs/
@@ -69,15 +69,11 @@ main.o: main.c
 init.o: common/init.c
 	$(CC) $(CFLAGS) -c common/init.c
 
+global.o: common/global.c
+	$(CC) $(CFLAGS) -c common/global.c
+
 # calculations
-ratio.o: calculations/ratio.c
-	$(CC) $(CFLAGS) -c calculations/ratio.c
 
-random.o: calculations/random.c
-	$(CC) $(CFLAGS) -c calculations/random.c
-
-factanal.o: calculations/factanal.c
-	$(CC) $(CFLAGS) -c calculations/factanal.c
 
 #report
 csv.o: report/csv.c
@@ -86,15 +82,6 @@ csv.o: report/csv.c
 log.o: report/log.c
 	$(CC) $(CFLAGS) -c report/log.c
 
-file.o: report/file.c
-	$(CC) $(CFLAGS) -c report/file.c
-
 #elevator
 elevator.o: elevator/elevator.c
 	$(CC) $(CFLAGS) -c elevator/elevator.c
-
-move.o: elevator/move.c
-	$(CC) $(CFLAGS) -c elevator/move.c
-
-customer.o: elevator/customer.c
-	$(CC) $(CFLAGS) -c elevator/customer.c

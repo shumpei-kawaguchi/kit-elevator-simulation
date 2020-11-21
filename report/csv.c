@@ -8,17 +8,7 @@
 
 #include "csv.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-
-#include "../calculations/ratio.h"
-#include "../common/define.h"
-#include "file.h"
-
 int new_csv(void) {
-  FILE *file;
   char path[32] = "";
   strcpy(path, file_path(1));
   // file open.
@@ -37,14 +27,19 @@ int new_csv(void) {
           pnow->tm_hour, pnow->tm_min, pnow->tm_sec);
 
   // Imput define.
-  fprintf(file, "LEVEL=%d,CLASS=%d,NUMBER_OF_PEOPLE=%d,BOX=%d\n", LEVEL, CLASS,
-          NUMBER_OF_PEOPLE, BOX);
+  fprintf(
+      file,
+      "LEVEL %d,CLASS %d,NUMBER_OF_PEOPLE %d,BOX %d,END_TIME %d, SERVER %d\n",
+      LEVEL, CLASS, NUMBER_OF_PEOPLE, BOX, END_TIME, SERVER);
+
   fprintf(file, "Classrooms,");
   for (int i = 0; i < LEVEL; i++)
-    fprintf(file, "%dF=%d,", i + 3, classroom_of(i));
+    fprintf(file, "%dF=%d,", i + 3, classroom_of_level[i]);
   fprintf(file, "\n");
   // Input Category.
-  fprintf(file, "Number,Combination,Service average,P1,P2,Final result\n");
+  fprintf(
+      file,
+      "Number,Convergence,Combination,Service average,P1,P2,Final result\n");
   // File close
   fclose(file);
   return 0;
@@ -52,7 +47,6 @@ int new_csv(void) {
 
 // Add string to CSV file
 int csv_s(char *string, char *value) {
-  FILE *file;
   char path[32] = "";
   strcpy(path, file_path(1));
   // file open.
@@ -71,7 +65,6 @@ int csv_s(char *string, char *value) {
 
 // Add int to CSV file
 int csv_d(char *string, int value) {
-  FILE *file;
   char path[32] = "";
   strcpy(path, file_path(1));
   // file open.
@@ -90,7 +83,6 @@ int csv_d(char *string, int value) {
 
 // Add double to CSV file
 int csv_lf(char *string, double value) {
-  FILE *file;
   char path[32] = "";
   strcpy(path, file_path(1));
   // file open.

@@ -9,7 +9,9 @@
 #ifndef ELEVATOR_H
 #define ELEVATOR_H
 
-double service_average(void);
+#include "../calculations/calculations.h"
+#include "../common/define.h"
+
 double elevator_system(double p1, double p2);
 
 #endif

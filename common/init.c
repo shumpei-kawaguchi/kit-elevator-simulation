@@ -8,12 +8,27 @@
 
 #include "init.h"
 
-#include <stdio.h>
+static int ratio_pattern(void) {
+  const char *TAG = __func__;
+  log_write(0, TAG, START);
+  int classroom[LEVEL] = {};
 
-#include "../calculations/ratio.h"
-#include "../report/csv.h"
-#include "../report/log.h"
-#include "define.h"
+  for (int i = 0; i < LEVEL; i++) {
+    classroom[i] = classroom_of_level[i];
+  }
+
+  int n = 0;
+  while (n < CLASS) {
+    int level = genRand(0, LEVEL - 1);
+    if (classroom[level] > 0) {
+      ratio_of_class[n] = level;
+      classroom[level]--;
+      n++;
+    }
+  }
+  log_write(0, TAG, END);
+  return 0;
+}
 
 int init(void) {
   const char *TAG = __func__;
@@ -23,7 +38,7 @@ int init(void) {
   // report.
   int combination[LEVEL] = {};
   for (int i = 0; i < CLASS; i++) {
-    combination[ratio_of(i)] += 1;
+    combination[ratio_of_class[i]] += 1;
   }
   for (int i = 0; i < LEVEL; i++) {
     csv_d("%d", combination[i]);

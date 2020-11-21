@@ -9,6 +9,13 @@
 #ifndef INIT_H
 #define INIT_H
 
+#include <stdio.h>
+
+#include "../calculations/calculations.h"
+#include "../report/csv.h"
+#include "../report/log.h"
+#include "define.h"
+
 int init(void);
 
 #endif
