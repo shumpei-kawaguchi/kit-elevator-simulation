@@ -16,10 +16,9 @@ TESTFLAGS     = -lgtest_main -lgtest
 # Files
 INIT          = init.o global.o
 CALCULATIONS  =
-REPORT        = csv.o log.o
 ELEVATOR      = elevator.o
 #
-OBJS          = main.o $(INIT) $(CALCULATIONS) $(QUEUE) $(REPORT) $(ELEVATOR)
+OBJS          = main.o $(INIT) $(CALCULATIONS) $(QUEUE) $(ELEVATOR)
 OBJS_PATH     = compile/objs/
 PROGRAM       = kit-elevator-simulation
 
@@ -71,16 +70,6 @@ init.o: common/init.c
 
 global.o: common/global.c
 	$(CC) $(CFLAGS) -c common/global.c
-
-# calculations
-
-
-#report
-csv.o: report/csv.c
-	$(CC) $(CFLAGS) -c report/csv.c
-
-log.o: report/log.c
-	$(CC) $(CFLAGS) -c report/log.c
 
 #elevator
 elevator.o: elevator/elevator.c

@@ -14,7 +14,7 @@
 #define START "--START--\n"
 #define END "--END--\n"
 #define LEVEL 7
-#define CLASS 7
+#define CLASS 8
 #define NUMBER_OF_PEOPLE 50
 #define BOX 4
 #define END_TIME 1000
@@ -25,14 +25,5 @@ extern const int classroom_of_level[LEVEL];
 extern int ratio_of_class[CLASS];
 extern char id[9];
 extern int LOG;
-
-typedef struct {
-  double deviation;
-  double n_variance;
-  double b_variance;
-  double total;
-  int i;
-  int n;
-} histgram;
 
 #endif

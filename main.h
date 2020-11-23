@@ -11,6 +11,7 @@
 
 #include <stdbool.h>
 
+#include "calculations/calculations.h"
 #include "common/define.h"
 #include "common/init.h"
 #include "elevator/elevator.h"
@@ -21,12 +22,12 @@
 
 int main(void);
 
-typedef struct item {
+typedef struct Settings {
   int iterations;
   bool is_convergence;
 } settings;
 
-static settings setup(void) {
+static inline settings setup(void) {
   const char *TAG = __func__;
   settings st = {0, true};
   new_id(7);
@@ -56,6 +57,28 @@ static settings setup(void) {
   }
   log_write(0, TAG, "Finithed setup.\n");
   return st;
+}
+
+static inline model up_peak_traffic() {
+  const char *TAG = __func__;
+  double average = service_average();
+  // １秒当たりの、到着率
+  double p1 = (double)(CLASS * NUMBER_OF_PEOPLE) / (10 * 60);
+  // 一人当たりの、サービス率
+  double p2 = 1 / (average / BOX);
+
+  model model = {p1, p2, SERVER};
+
+  log_write(0, TAG, "");
+  log_lf("Result = %lf, ", average);
+  log_lf("p1 = %lf, ", p1);
+  log_lf("p2 = %lf\n", p2);
+
+  csv_lf(",%lf", average);
+  csv_lf(",%lf", p1);
+  csv_lf(",%lf", p2);
+
+  return model;
 }
 
 #endif

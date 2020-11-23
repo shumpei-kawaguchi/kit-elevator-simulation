@@ -12,6 +12,11 @@
 #include "../calculations/calculations.h"
 #include "../common/define.h"
 
-double elevator_system(double p1, double p2);
+typedef struct Model {
+  double A;
+  double B;
+  double C;
+} model;
 
+double MMn_queueing_simulation(model MMn);
 #endif

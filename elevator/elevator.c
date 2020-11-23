@@ -8,28 +8,32 @@
 
 #include "elevator.h"
 
-double elevator_system(double p1, double p2) {
-  int time = 0;
-  int queue = 0;
-  int total_queue = 0;
+// A: 到着過程(到着時間間隔平均), B: サービス時間((処理時間平均), C: サーバー数
+typedef struct Queueing {
+  int time;
+  int queue;
+  int total;
+} queueing;
 
-  while (time < END_TIME) {
-    for (int i = 0; i < SERVER; i++) {
-      if (queue != 0) {
-        if (Rand() < p2) {
-          queue--;
+double MMn_queueing_simulation(model MMn) {
+  queueing queueing = {0, 0, 0};
+
+  while (queueing.time < END_TIME) {
+    for (int i = 0; i < MMn.C; i++) {
+      if (queueing.queue != 0) {
+        if (Rand() < MMn.B) {
+          queueing.queue--;
         }
       }
     }
 
-    if (Rand() < p1) {
-      queue++;
+    if (Rand() < MMn.A) {
+      queueing.queue++;
     }
 
-    time++;
-    total_queue += queue;
+    queueing.time++;
+    queueing.total += queueing.queue;
   }
 
-  double result = (double)total_queue / time;
-  return result;
+  return average((double)queueing.total, queueing.time);
 }

@@ -46,31 +46,33 @@ static inline double service_average(void) {
   log_write(0, TAG, START);
 
   // init
-  histgram hist = {0.0, 0.0, 0.0, 0.0, 0, 0};
+  int box[BOX] = {};
+  variances variances = {0.0, 0.0, 1};
+  double va = 0, b_va = 0, n = 0;
+  double result = 0.0;
 
-  while (hist.n < 10 || hist.n_variance == 0.0) {
-    int box[BOX] = {};
+  while (n < 10) {
     for (int i = 0; i < BOX; i++) {
       box[i] = get_in_box();
     }
-    double time = service(box);
-    hist.total += time;
+    result = service(box);
 
-    // convergence
-    if (hist.i > 0) {
-      hist.deviation += pow(time, 2.0);
-      hist.b_variance = hist.n_variance;
-      hist.n_variance = variance(hist);
-      if (fabs(hist.b_variance - hist.n_variance) < 0.01) hist.n++;
+    variances.result_total += result;
+    variances.squared_total += pow(result, 2.0);
+
+    if (variances.i > 0) {
+      b_va = va;
+      va = variance(variances);
     }
-    hist.i++;
+    if (fabs(b_va - va) < 0.01) n++;
+
+    variances.i++;
   }
 
-  csv_d(",%d", hist.i);
-
-  hist.total /= hist.i;
+  csv_d(",%d", variances.i);
   log_write(0, TAG, END);
-  return hist.total;
+
+  return average(variances.result_total, (double)variances.i);
 }
 
 #endif
