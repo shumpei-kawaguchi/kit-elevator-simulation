@@ -67,18 +67,20 @@ static inline model up_peak_traffic() {
   // 一人当たりの、サービス率
   double p2 = 1 / (average / BOX);
 
+  double r = p1 / (SERVER * p2);
+
   model model = {p1, p2, SERVER};
 
   log_write(0, TAG, "");
   log_lf("Result = %lf, ", average);
-  log_lf("p1 = %lf, ", p1);
-  log_lf("p2 = %lf,", p2);
-  log_lf("ρ = %lf,", p1 / (SERVER * p2));
+  log_lf("λ = %lf, ", p1);
+  log_lf("μ = %lf,", p2);
+  log_lf("ρ = %lf,", r);
 
   csv_lf(",%lf", average);
   csv_lf(",%lf", p1);
   csv_lf(",%lf", p2);
-  csv_lf(",%lf", p1 / (SERVER * p2));
+  csv_lf(",%lf", r);
 
   return model;
 }

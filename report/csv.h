@@ -42,7 +42,7 @@ static inline int new_csv(void) {
   // Input Category.
   fprintf(
       file,
-      "Number,Combination,Convergence,Service average,P1,P2,ρ,Final result\n");
+      "Number,Combination,Convergence,Service average,λ,μ,ρ,Final result\n");
   // File close
   fclose(file);
   return 0;
