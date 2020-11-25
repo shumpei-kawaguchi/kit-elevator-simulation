@@ -19,13 +19,13 @@ double MMn_queueing_simulation(model MMn) {
   queueing queueing = {0, 0, 0};
 
   while (queueing.time < END_TIME) {
-    for (int i = 0; i < MMn.C; i++) {
-      if (queueing.queue != 0) {
-        if (Rand() < MMn.B) {
-          queueing.queue--;
-        }
+    // for (int i = 0; i < MMn.C; i++) {
+    if (queueing.queue != 0) {
+      if (Rand() < (MMn.B * SERVER)) {
+        queueing.queue--;
       }
     }
+    // }
 
     if (Rand() < MMn.A) {
       queueing.queue++;

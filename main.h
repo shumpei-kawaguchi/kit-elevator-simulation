@@ -72,11 +72,13 @@ static inline model up_peak_traffic() {
   log_write(0, TAG, "");
   log_lf("Result = %lf, ", average);
   log_lf("p1 = %lf, ", p1);
-  log_lf("p2 = %lf\n", p2);
+  log_lf("p2 = %lf,", p2);
+  log_lf("ρ = %lf,", p1 / (SERVER * p2));
 
   csv_lf(",%lf", average);
   csv_lf(",%lf", p1);
   csv_lf(",%lf", p2);
+  csv_lf(",%lf", p1 / (SERVER * p2));
 
   return model;
 }

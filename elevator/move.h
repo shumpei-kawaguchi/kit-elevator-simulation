@@ -14,7 +14,7 @@
 #include "../report/csv.h"
 #include "../report/log.h"
 
-static const double time_to_move[8] = {12.2, 15.3, 18.4, 20.7,
+static const double TRAFFIC_TIME[8] = {12.2, 15.3, 18.4, 20.7,
                                        22.7, 24.9, 27.1, 29.3};
 
 static inline double service(int* box) {
@@ -28,12 +28,12 @@ static inline double service(int* box) {
   int start_position = -2;
   for (int i = 0; i < LEVEL; i++) {
     if (0 < destinations[i]) {  // i階に行く人がいれば...
-      result += time_to_move[-(start_position - i) - 1];
+      result += TRAFFIC_TIME[-(start_position - i) - 1];
 
       start_position = i;
     }
   }
-  result += time_to_move[start_position + 1];
+  result += TRAFFIC_TIME[start_position + 1];
   return result;
 }
 
