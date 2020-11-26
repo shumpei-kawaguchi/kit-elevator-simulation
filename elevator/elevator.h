@@ -12,11 +12,11 @@
 #include "../calculations/calculations.h"
 #include "../common/define.h"
 
-typedef struct Model {
+typedef struct mdoel {
   double A;
   double B;
   double C;
-} model;
+} MODEL;
 
-double MMn_queueing_simulation(model MMn);
+double MMn_queueing_simulation(MODEL MMn);
 #endif

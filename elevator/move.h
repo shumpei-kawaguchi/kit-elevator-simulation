@@ -47,7 +47,7 @@ static inline double service_average(void) {
 
   // init
   int box[BOX] = {};
-  variances variances = {0.0, 0.0, 1};
+  variances variances = {0.0, 0.0, 0};
   double va = 0, b_va = 0, n = 0;
   double result = 0.0;
 
@@ -69,10 +69,9 @@ static inline double service_average(void) {
     variances.i++;
   }
 
-  csv_d(",%d", variances.i);
   log_write(0, TAG, END);
 
-  return average(variances.result_total, (double)variances.i);
+  return average(variances.result_total, (double)variances.i + 1);
 }
 
 #endif

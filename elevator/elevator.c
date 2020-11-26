@@ -15,7 +15,7 @@ typedef struct Queueing {
   int total;
 } queueing;
 
-double MMn_queueing_simulation(model MMn) {
+double MMn_queueing_simulation(MODEL MMn) {
   queueing queueing = {0, 0, 0};
 
   while (queueing.time < END_TIME) {
@@ -35,5 +35,5 @@ double MMn_queueing_simulation(model MMn) {
     queueing.total += queueing.queue;
   }
 
-  return average((double)queueing.total, queueing.time);
+  return average((double)queueing.total, queueing.time + 1);
 }

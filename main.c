@@ -13,53 +13,41 @@ int LOG = 1;
 
 int main(void) {
   const char *TAG = __func__;
-  settings setting = setup();
+  SETTINGS setting = setup();
   log_write(0, TAG, START);
 
   for (int i = 0; i < setting.iterations; i++) {
-    csv_d("%d,", i);
-    init();
-    double final_result = 0.0;
-
-    model up_peak = up_peak_traffic();
-
-    if (setting.is_convergence == true) {
-      variances variances = {0.0, 0.0, 1};
-
-      double va = 0;
-      double b_va = 0;
-      double n = 0;
-
-      while (n < 10) {
-        double result = MMn_queueing_simulation(up_peak);
-        variances.result_total += result;
-        variances.squared_total += pow(result, 2.0);
-        if (variances.i > 0) {
-          b_va = va;
-          va = variance(variances);
-        }
-        if (fabs(b_va - va) < 0.01) {
-          n++;
-        }
-        variances.i++;
-      }
-
-      final_result = average(variances.result_total, (double)variances.i);
-    } else {
-      final_result = MMn_queueing_simulation(up_peak);
-    }
-
+    int id = init();
+    // MARK: Surch
+    //////////////
+    p = malloc(sizeof(PATTERN));
+    if (p == NULL) exit(-1);
+    p->next = root;
+    root = p;
+    p->id = id;
+    //////////////
+    p->model = up_peak_traffic();
+    p->result = convergence();
     // ========= Log =========
-    log_write(0, TAG, "");
-    log_lf("Final result = %lf\n", final_result);
-
-    csv_lf(",%lf\n", final_result);
     printf("\r%3.2f％ %.2fsec",
            ((double)i + 1) * 100 / (double)setting.iterations,
            (double)clock() / CLOCKS_PER_SEC);
     fflush(stdout);
   }
-  printf(" Completed🔥\n");
+
+  int i = 0;
+  char path[32] = "";
+  strcpy(path, file_path(1));
+  file = fopen(path, "a");
+  if (file == NULL) exit(1);
+  for (p = root; p; p = p->next) {
+    double r = p->model.A / (SERVER * p->model.B);
+    fprintf(file, "%d,%d,%lf,%lf,%lf,%lf,%lf\n", i, p->id, p->average,
+            p->model.A, p->model.B, r, p->result);
+    i++;
+  }
+  fclose(file);
   log_write(0, TAG, END);
-  exit(0);
+  printf(" Completed🔥\n");
+  return 0;
 }

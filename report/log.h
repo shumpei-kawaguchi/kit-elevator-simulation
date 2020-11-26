@@ -14,7 +14,7 @@
 // Write log header.
 // MM-dd hh:mm:ss
 static inline int log_header(void) {
-  if (LOG == 0) return 0;
+  if (LOG != 0) return 0;
   time_t now = time(NULL);
   struct tm *pnow = localtime(&now);
 
@@ -43,7 +43,7 @@ static inline int log_header(void) {
 // log_type 0 = "INFO", 1 = "ERROR", 2 = "DEBUG"
 static inline int log_write(int log_type, const char *func, char *message) {
   static const char type_name[3][7] = {"INFO", "ERROR", "DEBUG"};
-  if (LOG == 0) return 0;
+  if (LOG != 0) return 0;
   log_header();
   char path[32] = "";
   strcpy(path, file_path(0));
@@ -62,7 +62,7 @@ static inline int log_write(int log_type, const char *func, char *message) {
 }
 
 static inline int log_d(char *message, int value) {
-  if (LOG == 0) return 0;
+  if (LOG != 0) return 0;
   char path[32] = "";
   strcpy(path, file_path(0));
   // File open.
@@ -80,7 +80,7 @@ static inline int log_d(char *message, int value) {
 }
 
 static inline int log_lf(char *message, double value) {
-  if (LOG == 0) return 0;
+  if (LOG != 0) return 0;
   char path[32] = "";
   strcpy(path, file_path(0));
   // File open.

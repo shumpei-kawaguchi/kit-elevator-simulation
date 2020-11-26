@@ -37,13 +37,19 @@ int init(void) {
   ratio_pattern();
   // report.
   int combination[LEVEL] = {};
+
+  int id = 0;
+
   for (int i = 0; i < CLASS; i++) {
     combination[ratio_of_class[i]] += 1;
   }
+
   for (int i = 0; i < LEVEL; i++) {
-    csv_d("%d", combination[i]);
+    // csv_d("%d", combination[i]);
+    id += combination[i] * pow(10, LEVEL - (i + 1));
   }
+
   log_write(0, TAG, "Init ratio of level.\n");
   log_write(0, TAG, END);
-  return 0;
+  return id;
 }

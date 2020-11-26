@@ -40,64 +40,8 @@ static inline int new_csv(void) {
     fprintf(file, "%dF=%d,", i + 3, classroom_of_level[i]);
   fprintf(file, "\n");
   // Input Category.
-  fprintf(
-      file,
-      "Number,Combination,Convergence,Service average,λ,μ,ρ,Final result\n");
+  fprintf(file, "Number,Combination,Service average,λ,μ,ρ,Final result\n");
   // File close
-  fclose(file);
-  return 0;
-}
-
-// Add string to CSV file
-static inline int csv_s(char *string, char *value) {
-  char path[32] = "";
-  strcpy(path, file_path(1));
-  // file open.
-  file = fopen(path, "a");
-  if (file == NULL) {
-    printf("Cannot open file.\n");
-    exit(1);
-  }
-
-  fprintf(file, string, value);
-
-  // File close.
-  fclose(file);
-  return 0;
-}
-
-// Add int to CSV file
-static inline int csv_d(char *string, int value) {
-  char path[32] = "";
-  strcpy(path, file_path(1));
-  // file open.
-  file = fopen(path, "a");
-  if (file == NULL) {
-    printf("Cannot open file.\n");
-    exit(1);
-  }
-
-  fprintf(file, string, value);
-
-  // File close.
-  fclose(file);
-  return 0;
-}
-
-// Add double to CSV file
-static inline int csv_lf(char *string, double value) {
-  char path[32] = "";
-  strcpy(path, file_path(1));
-  // file open.
-  file = fopen(path, "a");
-  if (file == NULL) {
-    printf("Cannot open file.\n");
-    exit(1);
-  }
-
-  fprintf(file, string, value);
-
-  // File close.
   fclose(file);
   return 0;
 }
