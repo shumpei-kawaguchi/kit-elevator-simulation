@@ -17,7 +17,7 @@
 #define CLASS 8
 #define NUMBER_OF_PEOPLE 50
 #define BOX 10
-#define END_TIME 1000
+#define END_TIME 10000
 #define SERVER 3
 
 extern FILE *file;

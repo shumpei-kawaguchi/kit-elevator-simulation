@@ -42,8 +42,20 @@ int main(void) {
   if (file == NULL) exit(1);
   for (p = root; p; p = p->next) {
     double r = p->model.A / (SERVER * p->model.B);
-    fprintf(file, "%d,%d,%lf,%lf,%lf,%lf,%lf\n", i, p->id, p->average,
-            p->model.A, p->model.B, r, p->result);
+    double L = average(p->queueing.total, p->queueing.time + 1);
+    fprintf(file,
+            "%d,"
+            "%d,"
+            "%lf,"
+            "%lf,"
+            "%lf,"
+            "%lf,"
+            "%d,"
+            "%lf,"
+            "%lf,"
+            "%lf\n",
+            i, p->id, p->average, p->model.A, p->model.B, r, p->queueing.time,
+            L, p->result, (p->result - p->average));
     i++;
   }
   fclose(file);

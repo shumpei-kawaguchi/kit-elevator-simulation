@@ -18,5 +18,11 @@ typedef struct mdoel {
   double C;
 } MODEL;
 
-double MMn_queueing_simulation(MODEL MMn);
+typedef struct Queueing {
+  int time;
+  int queue;
+  int total;
+} QUEUEING;
+
+QUEUEING MMn_queueing_simulation(MODEL MMn);
 #endif

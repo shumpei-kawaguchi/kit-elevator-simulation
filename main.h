@@ -29,6 +29,7 @@ typedef struct settings {
 typedef struct pattern {
   int id;
   MODEL model;
+  QUEUEING queueing;
   double average;
   double result;
   struct pattern *next;
@@ -80,7 +81,9 @@ static inline double convergence() {
   double n = 0;
 
   while (n < 10) {
-    double result = MMn_queueing_simulation(p->model);
+    p->queueing = MMn_queueing_simulation(p->model);
+    double L = average(p->queueing.total, p->queueing.time + 1);
+    double result = L / p->model.A;
     variances.result_total += result;
     variances.squared_total += pow(result, 2.0);
     if (variances.i > 0) {

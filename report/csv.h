@@ -30,17 +30,31 @@ static inline int new_csv(void) {
           pnow->tm_hour, pnow->tm_min, pnow->tm_sec);
 
   // Imput define.
-  fprintf(
-      file,
-      "LEVEL %d,CLASS %d,NUMBER_OF_PEOPLE %d,BOX %d,END_TIME %d, SERVER %d\n",
-      LEVEL, CLASS, NUMBER_OF_PEOPLE, BOX, END_TIME, SERVER);
+  fprintf(file,
+          "LEVEL %d,"
+          "CLASS %d,"
+          "NUMBER_OF_PEOPLE %d,"
+          "BOX %d,"
+          "END_TIME %d,"
+          "SERVER %d\n",
+          LEVEL, CLASS, NUMBER_OF_PEOPLE, BOX, END_TIME, SERVER);
 
   fprintf(file, "Classrooms,");
   for (int i = 0; i < LEVEL; i++)
     fprintf(file, "%dF=%d,", i + 3, classroom_of_level[i]);
   fprintf(file, "\n");
   // Input Category.
-  fprintf(file, "Number,Combination,Service average,λ,μ,ρ,Final result\n");
+  fprintf(file,
+          "Number,"
+          "Combination,"
+          "Service average,"
+          "λ,"
+          "μ,"
+          "ρ,"
+          "End time,"
+          "L,"
+          "System average,"
+          "Tw\n");
   // File close
   fclose(file);
   return 0;
