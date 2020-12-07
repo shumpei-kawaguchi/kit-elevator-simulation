@@ -26,4 +26,16 @@ extern int ratio_of_class[CLASS];
 extern char id[9];
 extern int LOG;
 
+typedef struct mdoel {
+  double A;
+  double B;
+  double C;
+} MODEL;
+
+typedef struct Queueing {
+  int time;
+  int queue;
+  int total;
+} QUEUEING;
+
 #endif

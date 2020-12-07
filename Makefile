@@ -15,10 +15,8 @@ TESTFLAGS     = -lgtest_main -lgtest
 
 # Files
 INIT          = init.o global.o
-CALCULATIONS  =
-ELEVATOR      = elevator.o
 #
-OBJS          = main.o $(INIT) $(CALCULATIONS) $(QUEUE) $(ELEVATOR)
+OBJS          = main.o $(INIT) $(CALCULATIONS) $(QUEUE)
 OBJS_PATH     = compile/objs/
 PROGRAM       = kit-elevator-simulation
 
@@ -70,7 +68,3 @@ init.o: common/init.c
 
 global.o: common/global.c
 	$(CC) $(CFLAGS) -c common/global.c
-
-#elevator
-elevator.o: elevator/elevator.c
-	$(CC) $(CFLAGS) -c elevator/elevator.c

@@ -50,17 +50,17 @@ static inline SETTINGS setup(void) {
   return st;
 }
 
-static inline MODEL up_peak_traffic() {
-  p->average = service_average();
-  // １秒当たりの、到着率
-  double p1 = (double)(CLASS * NUMBER_OF_PEOPLE) / (10 * 60);
-  // 一人当たりの、サービス率
-  double p2 = 1 / (p->average / BOX);
+// static inline MODEL up_peak_traffic() {
+//   p->average = service_average();
+//   // １秒当たりの、到着率
+//   double p1 = (double)(CLASS * NUMBER_OF_PEOPLE) / (10 * 60);
+//   // 一人当たりの、サービス率
+//   double p2 = 1 / (p->average / BOX);
 
-  MODEL model = {p1, p2, SERVER};
+//   MODEL model = {p1, p2, SERVER};
 
-  return model;
-}
+//   return model;
+// }
 
 static inline double convergence() {
   variances variances = {0.0, 0.0, 0};

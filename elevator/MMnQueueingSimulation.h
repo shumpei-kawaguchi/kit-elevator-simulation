@@ -12,18 +12,6 @@
 #include "../calculations/calculations.h"
 #include "../common/define.h"
 
-typedef struct mdoel {
-  double A;
-  double B;
-  double C;
-} MODEL;
-
-typedef struct Queueing {
-  int time;
-  int queue;
-  int total;
-} QUEUEING;
-
 // A: 到着過程(到着時間間隔平均), B: サービス時間((処理時間平均), C: サーバー数
 
 static inline QUEUEING MMn_queueing_simulation(MODEL MMn) {

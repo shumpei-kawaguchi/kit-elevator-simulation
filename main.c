@@ -8,6 +8,8 @@
 
 #include "main.h"
 
+#include "elevator/upPeakTraffic.h"
+
 char id[9] = "test";
 int LOG = 1;
 
@@ -26,7 +28,8 @@ int main(void) {
     root = p;
     p->id = id;
     //////////////
-    p->model = up_peak_traffic();
+    p->average = service_average();
+    p->model = up_peak_traffic(p->average);
     p->result = convergence();
 
     process_print(setting.iterations, i);
