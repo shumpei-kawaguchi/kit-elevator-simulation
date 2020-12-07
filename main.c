@@ -18,7 +18,7 @@ int main(void) {
 
   for (int i = 0; i < setting.iterations; i++) {
     int id = init();
-    // MARK: Surch
+    // MARK: Search
     //////////////
     p = malloc(sizeof(PATTERN));
     if (p == NULL) exit(-1);
