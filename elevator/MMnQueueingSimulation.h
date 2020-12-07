@@ -26,7 +26,7 @@ typedef struct Queueing {
 
 // A: 到着過程(到着時間間隔平均), B: サービス時間((処理時間平均), C: サーバー数
 
-QUEUEING MMn_queueing_simulation(MODEL MMn) {
+static inline QUEUEING MMn_queueing_simulation(MODEL MMn) {
   QUEUEING queueing = {0, 0, 0};
   int customer = CLASS * NUMBER_OF_PEOPLE;
 
