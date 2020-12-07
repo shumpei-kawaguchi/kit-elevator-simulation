@@ -28,11 +28,8 @@ int main(void) {
     //////////////
     p->model = up_peak_traffic();
     p->result = convergence();
-    // ========= Log =========
-    printf("\r%3.2f％ %.2fsec",
-           ((double)i + 1) * 100 / (double)setting.iterations,
-           (double)clock() / CLOCKS_PER_SEC);
-    fflush(stdout);
+
+    process_print(setting.iterations, i);
   }
 
   int i = 0;

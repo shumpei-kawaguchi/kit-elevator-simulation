@@ -46,17 +46,6 @@ static inline SETTINGS setup(void) {
   new_csv();
   printf("\n[Setup] type iterations number.\n-> ");
   scanf("%d", &st.iterations);
-
-  // char l[] = "";
-  // printf("\n[Setup] Do you want to write log?\n");
-  // while (strcmp(l, "y") != 0) {
-  //   printf("(y/n)-> ");
-  //   scanf("%s", l);
-  //   if (strcmp(l, "n") == 0) {
-  //     LOG = 0;
-  //     break;
-  //   }
-  // }
   log_write(0, TAG, "Finithed setup.\n");
   return st;
 }
@@ -97,6 +86,13 @@ static inline double convergence() {
   }
 
   return average(variances.result_total, (double)variances.i + 1);
+}
+
+static inline void process_print(int iterations, int i) {
+  printf("\r%3.2f％ %.2fsec", ((double)i + 1) * 100 / (double)iterations,
+         (double)clock() / CLOCKS_PER_SEC);
+  fflush(stdout);
+  return;
 }
 
 #endif

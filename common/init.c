@@ -45,7 +45,6 @@ int init(void) {
   }
 
   for (int i = 0; i < LEVEL; i++) {
-    // csv_d("%d", combination[i]);
     id += combination[i] * pow(10, LEVEL - (i + 1));
   }
 
