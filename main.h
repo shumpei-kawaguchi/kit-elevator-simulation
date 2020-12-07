@@ -14,7 +14,7 @@
 #include "calculations/calculations.h"
 #include "common/define.h"
 #include "common/init.h"
-#include "elevator/elevator.h"
+#include "elevator/MMnQueueingSimulation.h"
 #include "elevator/move.h"
 #include "report/csv.h"
 #include "report/file.h"
