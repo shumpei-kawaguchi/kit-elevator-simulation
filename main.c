@@ -41,7 +41,7 @@ int main(void) {
   file = fopen(path, "a");
   if (file == NULL) exit(1);
   for (p = root; p; p = p->next) {
-    double r = p->model.A / (SERVER * p->model.B);
+    double r = p->model.rambda / (SERVER * p->model.mu);
     double L = average(p->queueing.total, p->queueing.time + 1);
     fprintf(file,
             "%d,"
@@ -54,8 +54,8 @@ int main(void) {
             "%lf,"
             "%lf,"
             "%lf\n",
-            i, p->id, p->average, p->model.A, p->model.B, r, p->queueing.time,
-            L, p->result, (p->result - p->average));
+            i, p->id, p->average, p->model.rambda, p->model.mu, r,
+            p->queueing.time, L, p->result, (p->result - p->average));
     i++;
   }
   fclose(file);

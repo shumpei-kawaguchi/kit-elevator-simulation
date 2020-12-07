@@ -13,11 +13,11 @@
 
 static inline MODEL up_peak_traffic(double average) {
   // １秒当たりの、到着率
-  double p1 = (double)(CLASS * NUMBER_OF_PEOPLE) / (10 * 60);
+  double rambda = (double)(CLASS * NUMBER_OF_PEOPLE) / (10 * 60);
   // 一人当たりの、サービス率
-  double p2 = 1 / (average / BOX);
+  double mu = 1 / (average / BOX);
 
-  MODEL model = {p1, p2, SERVER};
+  MODEL model = {rambda, mu, SERVER};
 
   return model;
 }

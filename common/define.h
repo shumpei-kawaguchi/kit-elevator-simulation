@@ -27,9 +27,9 @@ extern char id[9];
 extern int LOG;
 
 typedef struct mdoel {
-  double A;
-  double B;
-  double C;
+  double rambda;
+  double mu;
+  double server;
 } MODEL;
 
 typedef struct Queueing {

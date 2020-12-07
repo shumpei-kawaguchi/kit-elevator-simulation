@@ -60,7 +60,7 @@ static inline double convergence() {
   while (n < 10) {
     p->queueing = MMn_queueing_simulation(p->model);
     double L = average(p->queueing.total, p->queueing.time + 1);
-    double result = L / p->model.A;
+    double result = L / p->model.rambda;
     variances.result_total += result;
     variances.squared_total += pow(result, 2.0);
     if (variances.i > 0) {

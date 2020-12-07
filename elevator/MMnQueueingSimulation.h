@@ -12,20 +12,18 @@
 #include "../calculations/calculations.h"
 #include "../common/define.h"
 
-// A: 到着過程(到着時間間隔平均), B: サービス時間((処理時間平均), C: サーバー数
-
 static inline QUEUEING MMn_queueing_simulation(MODEL MMn) {
   QUEUEING queueing = {0, 0, 0};
   int customer = CLASS * NUMBER_OF_PEOPLE;
 
   while (queueing.time < END_TIME) {
     if (queueing.queue != 0) {
-      if (Rand() < (MMn.B * SERVER)) {
+      if (Rand() < (MMn.mu * SERVER)) {
         queueing.queue--;
       }
     }
 
-    if (Rand() < MMn.A && 0 < customer) {
+    if (Rand() < MMn.rambda && 0 < customer) {
       queueing.queue++;
       customer--;
     }
