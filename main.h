@@ -15,6 +15,7 @@
 #include "common/define.h"
 #include "common/init.h"
 #include "elevator/MMnQueueingSimulation.h"
+#include "elevator/boxOptimisation.h"
 #include "elevator/move.h"
 #include "report/csv.h"
 #include "report/file.h"

@@ -59,6 +59,8 @@ int main(void) {
     i++;
   }
   fclose(file);
+
+  opt_service_average();
   log_write(0, TAG, END);
   printf(" Completed🔥\n");
   return 0;
