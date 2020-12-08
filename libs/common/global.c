@@ -10,5 +10,5 @@
 
 FILE *file;
 
-const int classroom_of_level[LEVEL] = {1, 3, 3, 3, 2, 2, 1};
+int classroom_of_level[LEVEL] = {1, 3, 3, 3, 2, 2, 1};
 int ratio_of_class[CLASS] = {};

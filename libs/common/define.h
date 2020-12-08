@@ -21,7 +21,7 @@
 #define SERVER 3
 
 extern FILE *file;
-extern const int classroom_of_level[LEVEL];
+extern int classroom_of_level[LEVEL];
 extern int ratio_of_class[CLASS];
 extern char id[9];
 extern int LOG;

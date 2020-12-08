@@ -2,26 +2,21 @@
 //  main.h
 //  kit-elevator-simulation
 //
-//  Created by Shumpei Kawaguchi on 2020/11/04.
+//  Created by Shumpei Kawaguchi on 2020/12/8.
 //  Copyright (c) 2020 Shumpei Kawaguchi. All rights reserved.
 //
 
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <stdbool.h>
-
-#include "calculations/calculations.h"
-#include "common/define.h"
-#include "common/init.h"
-#include "elevator/MMnQueueingSimulation.h"
-#include "elevator/boxOptimisation.h"
-#include "elevator/move.h"
-#include "report/csv.h"
-#include "report/file.h"
-#include "report/log.h"
-
-int main(void);
+#include "../../libs/common/define.h"
+#include "../../libs/common/init.h"
+#include "../../libs/elevator/MMnQueueingSimulation.h"
+#include "../../libs/elevator/move.h"
+#include "../../libs/elevator/upPeakTraffic.h"
+#include "../../libs/report/csv.h"
+#include "../../libs/report/file.h"
+#include "../../libs/report/log.h"
 
 typedef struct settings {
   int iterations;
@@ -37,19 +32,11 @@ typedef struct pattern {
 } PATTERN;
 
 //////////////
-PATTERN *root = NULL, *p, *n, **q;
+PATTERN *root = NULL, *p;
 //////////////
 
-static inline SETTINGS setup(void) {
-  const char *TAG = __func__;
-  SETTINGS st = {0};
-  new_id(7);
-  new_csv();
-  printf("\n[Setup] type iterations number.\n-> ");
-  scanf("%d", &st.iterations);
-  log_write(0, TAG, "Finithed setup.\n");
-  return st;
-}
+SETTINGS setup(void);
+int main(void);
 
 static inline double convergence() {
   variances variances = {0.0, 0.0, 0};

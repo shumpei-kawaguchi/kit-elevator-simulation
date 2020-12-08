@@ -2,16 +2,25 @@
 //  main.c
 //  kit-elevator-simulation
 //
-//  Created by Shumpei Kawaguchi on 2020/10/20.
+//  Created by Shumpei Kawaguchi on 2020/12/8.
 //  Copyright (c) 2020 Shumpei Kawaguchi. All rights reserved.
 //
 
 #include "main.h"
 
-#include "elevator/upPeakTraffic.h"
-
 char id[9] = "test";
 int LOG = 1;
+
+SETTINGS setup(void) {
+  const char *TAG = __func__;
+  SETTINGS st = {0};
+  new_id(7);
+  new_csv();
+  printf("\n[Setup] type iterations number.\n-> ");
+  scanf("%d", &st.iterations);
+  log_write(0, TAG, "Finithed setup.\n");
+  return st;
+}
 
 int main(void) {
   const char *TAG = __func__;
@@ -60,7 +69,6 @@ int main(void) {
   }
   fclose(file);
 
-  opt_service_average();
   log_write(0, TAG, END);
   printf(" Completed🔥\n");
   return 0;
