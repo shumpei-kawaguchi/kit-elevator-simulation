@@ -14,11 +14,10 @@ CXX           = g++
 TESTFLAGS     = -lgtest_main -lgtest
 
 # Files
-INIT          = init.o global.o
-CALCULATIONS  =
-ELEVATOR      = elevator.o
+LIBS          = libs/init.o libs/calculations.o
+ELEVATOR      = libs/elevator.o libs/move.o
 #
-OBJS          = main.o $(INIT) $(CALCULATIONS) $(QUEUE) $(ELEVATOR)
+OBJS          = main.o $(LIBS) $(QUEUE) $(ELEVATOR)
 OBJS_PATH     = compile/objs/
 PROGRAM       = kit-elevator-simulation
 
@@ -33,7 +32,7 @@ ca:
 	make clean logrm csvrm
 
 clean:
-	rm -f *.o *.out *~ $(PROGRAM)
+	rm -f *.o libs/*.o *.out *~ $(PROGRAM)
 
 logrm:
 	rm -f output/*.log
@@ -57,20 +56,11 @@ test%:
 	./a.out
 
 # Compile functions =================================
-%.o: %.c
-	$(CC) $(CFLAGS) -c $^
 
 # main
 main.o: main.c
 	$(CC) $(CFLAGS) -c main.c
 
-# common
-init.o: common/init.c
-	$(CC) $(CFLAGS) -c common/init.c
-
-global.o: common/global.c
-	$(CC) $(CFLAGS) -c common/global.c
-
-#elevator
-elevator.o: elevator/elevator.c
-	$(CC) $(CFLAGS) -c elevator/elevator.c
+#libs
+libs/%.o: libs/$@.c
+	$(CC) $(CFLAGS) -c libs/$@.c

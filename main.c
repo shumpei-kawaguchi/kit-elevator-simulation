@@ -8,14 +8,26 @@
 
 #include "main.h"
 
-char id[9] = "test";
-int LOG = 1;
+// char id[9] = "test";
+
+int ratio_of_class[CLASS] = {};
+
+typedef struct settings {
+  int iterations;
+} SETTINGS;
+
+SETTINGS setup(void) {
+  const char *TAG = __func__;
+  SETTINGS st = {0};
+  new_csv();
+  printf("\n[Setup] type iterations number.\n-> ");
+  scanf("%d", &st.iterations);
+  return st;
+}
 
 int main(void) {
   const char *TAG = __func__;
   SETTINGS setting = setup();
-  log_write(0, TAG, START);
-
   for (int i = 0; i < setting.iterations; i++) {
     int id = init();
     // MARK: Surch
@@ -26,6 +38,7 @@ int main(void) {
     root = p;
     p->id = id;
     //////////////
+    p->average = service_average();
     p->model = up_peak_traffic();
     p->result = convergence();
     // ========= Log =========
@@ -35,9 +48,9 @@ int main(void) {
     fflush(stdout);
   }
 
+  FILE *file;
   int i = 0;
-  char path[32] = "";
-  strcpy(path, file_path(1));
+  char path[32] = "./output/data.csv";
   file = fopen(path, "a");
   if (file == NULL) exit(1);
   for (p = root; p; p = p->next) {
@@ -59,7 +72,6 @@ int main(void) {
     i++;
   }
   fclose(file);
-  log_write(0, TAG, END);
   printf(" Completed🔥\n");
   return 0;
 }

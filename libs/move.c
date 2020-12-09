@@ -1,23 +1,19 @@
 //
-//  move.h
+//  move.c
 //  kit-elevator-simulation
 //
-//  Created by kazusa watanabe on 2020/10/22.
+//  Created by kazusa watanabe on 2020/12/9.
 //  Copyright (c) 2020 \Kazusa Watanabe. All rights reserved.
 //
 
-#ifndef MOVE_H
-#define MOVE_H
-
-#include "../calculations/calculations.h"
-#include "../common/define.h"
-#include "../report/csv.h"
-#include "../report/log.h"
+#include "move.h"
 
 static const double TRAFFIC_TIME[8] = {12.2, 15.3, 18.4, 20.7,
                                        22.7, 24.9, 27.1, 29.3};
 
-static inline double service(int* box) {
+static int get_in_box(void) { return ratio_of_class[genRand(0, CLASS - 1)]; }
+
+static double service(int* box) {
   double result = 0.0;
   // 何階に止まるか
   int destinations[LEVEL] = {};
@@ -37,14 +33,7 @@ static inline double service(int* box) {
   return result;
 }
 
-static inline int get_in_box(void) {
-  return ratio_of_class[genRand(0, CLASS - 1)];
-}
-
-static inline double service_average(void) {
-  const char* TAG = __func__;
-  log_write(0, TAG, START);
-
+double service_average(void) {
   // init
   int box[BOX] = {};
   variances variances = {0.0, 0.0, 0};
@@ -69,9 +58,5 @@ static inline double service_average(void) {
     variances.i++;
   }
 
-  log_write(0, TAG, END);
-
   return average(variances.result_total, (double)variances.i + 1);
 }
-
-#endif

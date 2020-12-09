@@ -11,67 +11,17 @@
 
 #include <stdbool.h>
 
-#include "calculations/calculations.h"
-#include "common/define.h"
-#include "common/init.h"
-#include "elevator/elevator.h"
-#include "elevator/move.h"
-#include "report/csv.h"
-#include "report/file.h"
-#include "report/log.h"
+#include "libs/calculations.h"
+#include "libs/define.h"
+#include "libs/elevator.h"
+#include "libs/init.h"
+#include "libs/move.h"
 
 int main(void);
 
-typedef struct settings {
-  int iterations;
-} SETTINGS;
-
-typedef struct pattern {
-  int id;
-  MODEL model;
-  QUEUEING queueing;
-  double average;
-  double result;
-  struct pattern *next;
-} PATTERN;
-
 //////////////
-PATTERN *root = NULL, *p, *n, **q;
+PATTERN *root = NULL, *p;
 //////////////
-
-static inline SETTINGS setup(void) {
-  const char *TAG = __func__;
-  SETTINGS st = {0};
-  new_id(7);
-  new_csv();
-  printf("\n[Setup] type iterations number.\n-> ");
-  scanf("%d", &st.iterations);
-
-  // char l[] = "";
-  // printf("\n[Setup] Do you want to write log?\n");
-  // while (strcmp(l, "y") != 0) {
-  //   printf("(y/n)-> ");
-  //   scanf("%s", l);
-  //   if (strcmp(l, "n") == 0) {
-  //     LOG = 0;
-  //     break;
-  //   }
-  // }
-  log_write(0, TAG, "Finithed setup.\n");
-  return st;
-}
-
-static inline MODEL up_peak_traffic() {
-  p->average = service_average();
-  // １秒当たりの、到着率
-  double p1 = (double)(CLASS * NUMBER_OF_PEOPLE) / (10 * 60);
-  // 一人当たりの、サービス率
-  double p2 = 1 / (p->average / BOX);
-
-  MODEL model = {p1, p2, SERVER};
-
-  return model;
-}
 
 static inline double convergence() {
   variances variances = {0.0, 0.0, 0};
@@ -81,7 +31,7 @@ static inline double convergence() {
   double n = 0;
 
   while (n < 10) {
-    p->queueing = MMn_queueing_simulation(p->model);
+    p->queueing = queueing_simulation(p->model);
     double L = average(p->queueing.total, p->queueing.time + 1);
     double result = L / p->model.A;
     variances.result_total += result;

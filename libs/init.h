@@ -10,12 +10,14 @@
 #define INIT_H
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
 
-#include "../calculations/calculations.h"
-#include "../report/csv.h"
-#include "../report/log.h"
+#include "calculations.h"
 #include "define.h"
 
 int init(void);
+int new_csv(void);
 
 #endif

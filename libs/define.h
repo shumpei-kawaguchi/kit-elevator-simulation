@@ -20,10 +20,28 @@
 #define END_TIME 10000
 #define SERVER 3
 
-extern FILE *file;
-extern const int classroom_of_level[LEVEL];
+typedef struct mdoel {
+  double A;
+  double B;
+  double C;
+} MODEL;
+
+typedef struct Queueing {
+  int time;
+  int queue;
+  int total;
+} QUEUEING;
+
+typedef struct pattern {
+  int id;
+  MODEL model;
+  QUEUEING queueing;
+  double average;
+  double result;
+  struct pattern *next;
+} PATTERN;
+
 extern int ratio_of_class[CLASS];
-extern char id[9];
-extern int LOG;
+extern PATTERN *p;
 
 #endif

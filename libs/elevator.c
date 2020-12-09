@@ -10,7 +10,18 @@
 
 // A: 到着過程(到着時間間隔平均), B: サービス時間((処理時間平均), C: サーバー数
 
-QUEUEING MMn_queueing_simulation(MODEL MMn) {
+MODEL up_peak_traffic() {
+  // １秒当たりの、到着率
+  double p1 = (double)(CLASS * NUMBER_OF_PEOPLE) / (10 * 60);
+  // 一人当たりの、サービス率
+  double p2 = 1 / (p->average / BOX);
+
+  MODEL model = {p1, p2, SERVER};
+
+  return model;
+}
+
+QUEUEING queueing_simulation(MODEL MMn) {
   QUEUEING queueing = {0, 0, 0};
   int customer = CLASS * NUMBER_OF_PEOPLE;
 
