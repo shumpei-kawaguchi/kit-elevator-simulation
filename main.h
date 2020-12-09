@@ -19,9 +19,7 @@
 
 int main(void);
 
-//////////////
 PATTERN *root = NULL, *p;
-//////////////
 
 static inline double convergence() {
   variances variances = {0.0, 0.0, 0};

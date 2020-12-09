@@ -44,5 +44,4 @@ QUEUEING queueing_simulation(MODEL MMn) {
   }
 
   return queueing;
-  // return average((double)queueing.total, queueing.time + 1) / MMn.A;
 }
