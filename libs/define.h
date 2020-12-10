@@ -41,7 +41,8 @@ typedef struct pattern {
   int id;
   MODEL model;
   QUEUEING queueing;
-  double average;
+  // double average;
+  RESULT average;
   double result;
   struct pattern *next;
 } PATTERN;
