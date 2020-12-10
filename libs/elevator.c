@@ -14,7 +14,7 @@ MODEL up_peak_traffic() {
   // １秒当たりの、到着率
   double p1 = (double)(CLASS * NUMBER_OF_PEOPLE) / (10 * 60);
   // 一人当たりの、サービス率
-  double p2 = 1 / (p->average / BOX);
+  double p2 = 1 / ((p->average.back) / BOX);
 
   MODEL model = {p1, p2, SERVER};
 
