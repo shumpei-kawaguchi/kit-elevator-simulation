@@ -15,6 +15,7 @@ static int get_in_box(void) { return ratio_of_class[genRand(0, CLASS - 1)]; }
 
 static double service(int* box) {
   double result = 0.0;
+  result += 11.784;
   // 何階に止まるか
   int destinations[LEVEL] = {};
   for (int i = 0; i < BOX; i++) {
@@ -25,6 +26,7 @@ static double service(int* box) {
   for (int i = 0; i < LEVEL; i++) {
     if (0 < destinations[i]) {  // i階に行く人がいれば...
       result += TRAFFIC_TIME[-(start_position - i) - 1];
+      result += 17.92;
 
       start_position = i;
     }
