@@ -26,6 +26,11 @@ typedef struct mdoel {
   double C;
 } MODEL;
 
+typedef struct st_result {
+  double service;
+  double back;
+} RESULT;
+
 typedef struct Queueing {
   int time;
   int queue;

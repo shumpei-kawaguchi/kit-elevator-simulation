@@ -15,7 +15,7 @@ TESTFLAGS     = -lgtest_main -lgtest
 
 # Files
 LIBS          = libs/init.o libs/calculations.o
-ELEVATOR      = libs/elevator.o libs/move.o
+ELEVATOR      = libs/elevator.o libs/move.o libs/service.o
 #
 OBJS          = main.o $(LIBS) $(QUEUE) $(ELEVATOR)
 OBJS_PATH     = compile/objs/

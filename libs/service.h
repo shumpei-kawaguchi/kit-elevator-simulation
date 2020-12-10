@@ -12,11 +12,6 @@
 #include "calculations.h"
 #include "define.h"
 
-typedef struct st_result {
-  double service;
-  double back;
-} RESULT;
-
 RESULT result_average(void);
 
 #endif
