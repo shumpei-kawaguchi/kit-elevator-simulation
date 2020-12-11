@@ -11,7 +11,6 @@
 const int classroom_of_level[LEVEL] = {1, 3, 3, 3, 2, 2, 1};
 
 static int ratio_pattern(void) {
-  const char *TAG = __func__;
   int classroom[LEVEL] = {};
 
   for (int i = 0; i < LEVEL; i++) {
@@ -31,7 +30,6 @@ static int ratio_pattern(void) {
 }
 
 int init(void) {
-  const char *TAG = __func__;
   int combination[LEVEL] = {};
   int id = 0;
 

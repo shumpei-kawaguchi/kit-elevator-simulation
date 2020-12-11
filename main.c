@@ -8,18 +8,15 @@
 
 #include "main.h"
 
-// char id[9] = "test";
-
 int ratio_of_class[CLASS] = {};
+PATTERN *p;
 
 typedef struct settings {
   int iterations;
 } SETTINGS;
 
 SETTINGS setup(void) {
-  const char *TAG = __func__;
   SETTINGS st = {0};
-  // result_average();
   new_csv();
   printf("\n[Setup] type iterations number.\n-> ");
   scanf("%d", &st.iterations);
@@ -27,34 +24,18 @@ SETTINGS setup(void) {
 }
 
 int main(void) {
-  const char *TAG = __func__;
   SETTINGS setting = setup();
   for (int i = 0; i < setting.iterations; i++) {
-    int id = init();
-    // MARK: Surch
-    //////////////
     p = malloc(sizeof(PATTERN));
     if (p == NULL) exit(-1);
-    p->next = root;
-    root = p;
-    p->id = id;
-    //////////////
+    p->id = init();
     p->average = opt_service_average();
     p->model = up_peak_traffic();
     p->result = convergence();
-    // ========= Log =========
-    printf("\r%3.2f％ %.2fsec",
-           ((double)i + 1) * 100 / (double)setting.iterations,
-           (double)clock() / CLOCKS_PER_SEC);
-    fflush(stdout);
-  }
-
-  FILE *file;
-  int i = 0;
-  char path[32] = "./output/data.csv";
-  file = fopen(path, "a");
-  if (file == NULL) exit(1);
-  for (p = root; p; p = p->next) {
+    // ========= CSV =========
+    FILE *file;
+    file = fopen("./output/data.csv", "a");
+    if (file == NULL) exit(1);
     double r = p->model.A / (SERVER * p->model.B);
     double L = average(p->queueing.total, p->queueing.time + 1);
     fprintf(file,
@@ -72,9 +53,15 @@ int main(void) {
             i, p->id, p->average.service, p->average.back, p->model.A,
             p->model.B, r, p->queueing.time, L, p->result,
             (p->result - p->average.service));
-    i++;
+    fclose(file);
+    free(p);
+    // ========= Log progress =========
+    printf("\r%3.2f％ %.2fsec",
+           ((double)i + 1) * 100 / (double)setting.iterations,
+           (double)clock() / CLOCKS_PER_SEC);
+    fflush(stdout);
   }
-  fclose(file);
+
   printf(" Completed🔥\n");
   return 0;
 }
