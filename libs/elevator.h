@@ -12,6 +12,6 @@
 #include "calculations.h"
 #include "define.h"
 
-MODEL mmn_model();
+MODEL mmn_model(void);
 QUEUEING queueing_simulation(MODEL MMn);
 #endif

@@ -10,7 +10,7 @@
 
 // A: 到着過程(到着時間間隔平均), B: サービス時間((処理時間平均), C: サーバー数
 
-MODEL mmn_model() {
+MODEL mmn_model(void) {
   // １秒当たりの、到着率
   double rambda = RAMBDA;
   // 一人当たりの、サービス率
