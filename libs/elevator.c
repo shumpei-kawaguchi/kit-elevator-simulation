@@ -10,13 +10,13 @@
 
 // A: 到着過程(到着時間間隔平均), B: サービス時間((処理時間平均), C: サーバー数
 
-MODEL up_peak_traffic() {
+MODEL mmn_model() {
   // １秒当たりの、到着率
-  double p1 = (double)(CLASS * NUMBER_OF_PEOPLE) / (10 * 60);
+  double rambda = RAMBDA;
   // 一人当たりの、サービス率
-  double p2 = 1 / ((p->average.back) / BOX);
+  double mu = 1 / ((p->average.back) / BOX);
 
-  MODEL model = {p1, p2, SERVER};
+  MODEL model = {rambda, mu, SERVER};
 
   return model;
 }

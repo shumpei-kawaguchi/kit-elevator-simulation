@@ -30,7 +30,7 @@ int main(void) {
     if (p == NULL) exit(-1);
     p->id = init();
     p->average = opt_service_average();
-    p->model = up_peak_traffic();
+    p->model = mmn_model();
     p->result = convergence();
     // ========= CSV =========
     FILE *file;

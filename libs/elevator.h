@@ -12,6 +12,6 @@
 #include "calculations.h"
 #include "define.h"
 
-MODEL up_peak_traffic();
+MODEL mmn_model();
 QUEUEING queueing_simulation(MODEL MMn);
 #endif

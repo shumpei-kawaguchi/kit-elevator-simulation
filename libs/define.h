@@ -20,6 +20,8 @@
 #define END_TIME 10000
 #define SERVER 3
 
+#define RAMBDA (double)(CLASS * NUMBER_OF_PEOPLE) / (10 * 60)
+
 typedef struct mdoel {
   double A;
   double B;

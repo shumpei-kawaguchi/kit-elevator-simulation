@@ -8,8 +8,6 @@
 
 #include "optimisation.h"
 
-#define RAMBDA (double)(CLASS * NUMBER_OF_PEOPLE) / (10 * 60)
-
 static CUSTOMER *head = NULL, *prev = NULL;
 static int queue_length;
 static int customers;
