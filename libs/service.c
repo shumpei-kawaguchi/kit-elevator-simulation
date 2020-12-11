@@ -13,7 +13,7 @@ static const double TRAFFIC_TIME[8] = {12.2, 15.3, 18.4, 20.7,
 
 static int get_in_box(void) { return ratio_of_class[genRand(0, CLASS - 1)]; }
 
-static RESULT result(int *box) {
+RESULT result(int *box) {
   RESULT r = {0.0, 0.0};
   int stop = 0;
 

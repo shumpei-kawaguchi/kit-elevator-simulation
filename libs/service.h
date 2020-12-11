@@ -12,6 +12,7 @@
 #include "calculations.h"
 #include "define.h"
 
+RESULT result(int *box);
 RESULT result_average(void);
 
 #endif
