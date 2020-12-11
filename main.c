@@ -39,7 +39,7 @@ int main(void) {
     root = p;
     p->id = id;
     //////////////
-    p->average = result_average();
+    p->average = opt_service_average();
     p->model = up_peak_traffic();
     p->result = convergence();
     // ========= Log =========

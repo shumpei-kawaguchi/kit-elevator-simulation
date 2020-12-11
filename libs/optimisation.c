@@ -11,8 +11,8 @@
 #define RAMBDA (double)(CLASS * NUMBER_OF_PEOPLE) / (10 * 60)
 
 static CUSTOMER *head = NULL, *prev = NULL;
-static int queue_length = 0;
-static int customers = CLASS * NUMBER_OF_PEOPLE;
+static int queue_length;
+static int customers;
 
 static int sort_rule(void) {
   int dest_ratio[LEVEL] = {};
@@ -159,12 +159,12 @@ RESULT opt_service_average(void) {
   double elevators[SERVER] = {};
   // int customers = CLASS * NUMBER_OF_PEOPLE;
   int time = 0;
-
+  queue_length = 0;
+  customers = CLASS * NUMBER_OF_PEOPLE;
   while (1) {
     /// rambda arrival - create queue
     // sort elevators
     sort_array(elevators, SERVER);
-
     // customer waiting...
     time = customer_waiting(elevators, time);
     // elevator waiting...
