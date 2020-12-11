@@ -19,7 +19,7 @@ typedef struct settings {
 SETTINGS setup(void) {
   const char *TAG = __func__;
   SETTINGS st = {0};
-  result_average();
+  // result_average();
   new_csv();
   printf("\n[Setup] type iterations number.\n-> ");
   scanf("%d", &st.iterations);
