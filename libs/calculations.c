@@ -18,7 +18,7 @@ int factanal(int x) {
   return f;
 }
 
-double Rand() { return ((double)rand() / RAND_MAX); }
+double Rand(void) { return ((double)rand() / RAND_MAX); }
 
 int genRand(int min, int max) {
   static int flag;
