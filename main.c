@@ -19,6 +19,7 @@ typedef struct settings {
 SETTINGS setup(void) {
   const char *TAG = __func__;
   SETTINGS st = {0};
+  // result_average();
   new_csv();
   printf("\n[Setup] type iterations number.\n-> ");
   scanf("%d", &st.iterations);
@@ -38,7 +39,7 @@ int main(void) {
     root = p;
     p->id = id;
     //////////////
-    p->average = service_average();
+    p->average = opt_service_average();
     p->model = up_peak_traffic();
     p->result = convergence();
     // ========= Log =========
@@ -63,12 +64,14 @@ int main(void) {
             "%lf,"
             "%lf,"
             "%lf,"
+            "%lf,"
             "%d,"
             "%lf,"
             "%lf,"
             "%lf\n",
-            i, p->id, p->average, p->model.A, p->model.B, r, p->queueing.time,
-            L, p->result, (p->result - p->average));
+            i, p->id, p->average.service, p->average.back, p->model.A,
+            p->model.B, r, p->queueing.time, L, p->result,
+            (p->result - p->average.service));
     i++;
   }
   fclose(file);

@@ -16,6 +16,8 @@
 #include "libs/elevator.h"
 #include "libs/init.h"
 #include "libs/move.h"
+#include "libs/optimisation.h"
+#include "libs/service.h"
 
 int main(void);
 

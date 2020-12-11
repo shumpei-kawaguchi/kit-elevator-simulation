@@ -26,6 +26,11 @@ typedef struct mdoel {
   double C;
 } MODEL;
 
+typedef struct st_result {
+  double service;
+  double back;
+} RESULT;
+
 typedef struct Queueing {
   int time;
   int queue;
@@ -36,7 +41,8 @@ typedef struct pattern {
   int id;
   MODEL model;
   QUEUEING queueing;
-  double average;
+  // double average;
+  RESULT average;
   double result;
   struct pattern *next;
 } PATTERN;
