@@ -15,7 +15,7 @@
 #define END "--END--\n"
 #define LEVEL 7
 #define CLASS 8
-#define NUMBER_OF_PEOPLE 50
+#define NUMBER_OF_PEOPLE 30
 #define BOX 10
 #define END_TIME 10000
 #define SERVER 3

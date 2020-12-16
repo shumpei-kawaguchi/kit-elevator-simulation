@@ -92,6 +92,18 @@ int new_csv(void) {
           "L,"
           "System average,"
           "Tw\n");
+  fprintf(file,
+          ","
+          ","
+          "=AVERAGE(C6:C10005),"
+          "=AVERAGE(D6:D10005),"
+          ","
+          "=AVERAGE(F6:F10005),"
+          "=AVERAGE(G6:G10005),"
+          "=AVERAGE(H6:H10005),"
+          "=AVERAGE(I6:I10005),"
+          "=AVERAGE(J6:J10005),"
+          "=AVERAGE(K6:K10005)\n");
   fclose(file);
   return 0;
 }
