@@ -13,13 +13,22 @@ PATTERN *p;
 
 typedef struct settings {
   int iterations;
+  int optimisation;
 } SETTINGS;
 
 SETTINGS setup(void) {
-  SETTINGS st = {0};
+  SETTINGS st = {0, 0};
   new_csv();
   printf("\n[Setup] type iterations number.\n-> ");
   scanf("%d", &st.iterations);
+  printf("\n[Setup] Optimisation box? type 0[yes] or 1[no]\n-> ");
+  while (1) {
+    scanf("%d", &st.optimisation);
+    if (st.optimisation == 0 || st.optimisation == 1)
+      break;
+    else
+      printf("fatal\n->");
+  }
   return st;
 }
 
@@ -29,7 +38,12 @@ int main(void) {
     p = malloc(sizeof(PATTERN));
     if (p == NULL) exit(-1);
     p->id = init();
-    p->average = opt_service_average();
+    if (setting.optimisation == 0) {
+      p->average = opt_service_average();
+    } else {
+      p->average = result_average();
+    }
+
     p->model = mmn_model();
     p->result = convergence();
     // ========= CSV =========
