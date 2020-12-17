@@ -8,30 +8,28 @@
 
 #include "init.h"
 
-const int classroom_of_level[LEVEL] = {1, 3, 3, 3, 2, 2, 1};
+int classroom_of_level[LEVEL] = {1, 3, 3, 3, 2, 2, 1};
 
 static int ratio_pattern(void) {
-  const char *TAG = __func__;
-  int classroom[LEVEL] = {};
+  int classroom[LEVEL] = {};  //残っている classroom用の配列を定義
 
-  for (int i = 0; i < LEVEL; i++) {
+  for (int i = 0; i < LEVEL; i++) {  // iの定義と初期化
     classroom[i] = classroom_of_level[i];
-  }
+  }  // classroomにclassroom_of_levelの配列をコピー
 
   int n = 0;
   while (n < CLASS) {
-    int level = genRand(0, LEVEL - 1);
-    if (classroom[level] > 0) {
-      ratio_of_class[n] = level;
-      classroom[level]--;
-      n++;
+    int level = genRand(0, LEVEL - 1);  // levelに0~6までのランダムの値を代入
+    if (classroom[level] > 0) {  //教室が残っているかどうかを見る
+      ratio_of_class[n] = level;  // n番目のクラスが何回に行くかを記録
+      classroom[level]--;         //教室の残りから１マイナス
+      n++;                        // nに１プラス
     }
   }
   return 0;
 }
 
 int init(void) {
-  const char *TAG = __func__;
   int combination[LEVEL] = {};
   int id = 0;
 
@@ -86,6 +84,7 @@ int new_csv(void) {
           "Number,"
           "Combination,"
           "Service average,"
+          "Back,"
           "λ,"
           "μ,"
           "ρ,"
@@ -93,6 +92,18 @@ int new_csv(void) {
           "L,"
           "System average,"
           "Tw\n");
+  fprintf(file,
+          ","
+          ","
+          "=AVERAGE(C6:C10005),"
+          "=AVERAGE(D6:D10005),"
+          ","
+          "=AVERAGE(F6:F10005),"
+          "=AVERAGE(G6:G10005),"
+          "=AVERAGE(H6:H10005),"
+          "=AVERAGE(I6:I10005),"
+          "=AVERAGE(J6:J10005),"
+          "=AVERAGE(K6:K10005)\n");
   fclose(file);
   return 0;
 }

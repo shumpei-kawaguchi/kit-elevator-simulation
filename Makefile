@@ -15,9 +15,10 @@ TESTFLAGS     = -lgtest_main -lgtest
 
 # Files
 LIBS          = libs/init.o libs/calculations.o
-ELEVATOR      = libs/elevator.o libs/move.o
+ELEVATOR      = libs/elevator.o libs/move.o libs/service.o
+OPTIMISATION  = libs/optimisation.o libs/sort.o
 #
-OBJS          = main.o $(LIBS) $(QUEUE) $(ELEVATOR)
+OBJS          = main.o $(LIBS) $(QUEUE) $(ELEVATOR) $(OPTIMISATION)
 OBJS_PATH     = compile/objs/
 PROGRAM       = kit-elevator-simulation
 
