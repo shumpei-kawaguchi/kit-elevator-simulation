@@ -14,7 +14,7 @@ MODEL mmn_model(void) {
   // １秒当たりの、到着率
   double rambda = RAMBDA;
   // 一人当たりの、サービス率
-  double mu = 1 / ((p->average.back) / BOX);
+  double mu = BOX / p->average.back;
 
   MODEL model = {rambda, mu, SERVER};
 
