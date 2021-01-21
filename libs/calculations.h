@@ -21,7 +21,7 @@ typedef struct Variances {
   int i;
 } variances;
 
-int factanal(int x);
+long factanal(int x);
 double Rand(void);
 int genRand(int min, int max);
 double average(double total, double n);

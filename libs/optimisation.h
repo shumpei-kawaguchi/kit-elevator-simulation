@@ -21,6 +21,6 @@ typedef struct customer {
   struct customer *next;
 } CUSTOMER;
 
-RESULT opt_service_average(void);
+RESULT opt_service_average(int opt);
 
 #endif

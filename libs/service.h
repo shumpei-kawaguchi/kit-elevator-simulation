@@ -13,6 +13,6 @@
 #include "define.h"
 
 RESULT result(int *box);
-RESULT result_average(void);
+RESULT result_average(int opt);
 
 #endif

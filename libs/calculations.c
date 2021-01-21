@@ -8,8 +8,8 @@
 
 #include "calculations.h"
 
-int factanal(int x) {
-  int f = x;
+long factanal(int x) {
+  long f = (int)x;
   while (1) {
     x--;
     if (x < 2) break;

@@ -43,13 +43,13 @@ typedef struct pattern {
   int id;
   MODEL model;
   QUEUEING queueing;
-  // double average;
   RESULT average;
   double result;
   struct pattern *next;
 } PATTERN;
 
 extern int ratio_of_class[CLASS];
+extern const int classroom_of_level[LEVEL];
 extern PATTERN *p;
 
 #endif

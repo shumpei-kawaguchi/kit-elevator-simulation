@@ -8,10 +8,10 @@
 
 #include "service.h"
 
+#include "optimisation.h"
+
 static const double TRAFFIC_TIME[8] = {12.2, 15.3, 18.4, 20.7,
                                        22.7, 24.9, 27.1, 29.3};
-
-static int get_in_box(void) { return ratio_of_class[genRand(0, CLASS - 1)]; }
 
 RESULT result(int *box) {
   RESULT r = {0.0, 0.0};
@@ -44,9 +44,8 @@ RESULT result(int *box) {
   return r;
 }
 
-RESULT result_average(void) {
+RESULT result_average(int opt) {
   // init
-  int box[BOX] = {};
   variances va_service = {0.0, 0.0, 0};
   variances va_back = {0.0, 0.0, 0};
   double va_s = 0, b_va_s = 0, va_b = 0, b_va_b = 0;
@@ -54,10 +53,7 @@ RESULT result_average(void) {
   RESULT pt_retult = {0.0, 0.0};
 
   while (n < 10) {
-    for (int i = 0; i < BOX; i++) {
-      box[i] = get_in_box();
-    }
-    pt_retult = result(box);
+    pt_retult = opt_service_average(opt);
 
     va_service.result_total += pt_retult.service;
     va_service.squared_total += pow(pt_retult.service, 2.0);
